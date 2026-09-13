@@ -42,7 +42,13 @@ body {
   position: relative;
 }
 .hero.hero-dex .overlay {
-  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.55) 100%);
+  /* Lighter in the middle so the 107-task grid video reads through behind the title,
+     darker at the top and bottom for nav / authors legibility. */
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.18) 32%,
+    rgba(0,0,0,0.18) 68%,
+    rgba(0,0,0,0.55) 100%);
 }
 .hero.hero-dex .hero-title {
   font-family: 'Google Sans', sans-serif;

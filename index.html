@@ -105,7 +105,7 @@
           learning</b>, and <b>visual shifts</b>. These limits are especially important for bimanual dexterous
           manipulation, where two multi-fingered hands must coordinate contact-rich actions beyond the scope of
           parallel-jaw settings. We present <b>DexSimBench</b>, a simulation benchmark for measuring these
-          capabilities in bimanual dexterous manipulation. It includes <b>117 tasks</b> across five axes:
+          capabilities in bimanual dexterous manipulation. It includes <b>107 tasks</b> across five axes:
           Generalization, Instruction-Following, Limited Demonstrations, Long Horizon, and Memory. Tasks are defined
           through compositional goals built from typed predicates, enabling <b>graded evaluation</b> that identifies
           partial progress and specific failure modes. Each task also has an out-of-domain variant with controlled
@@ -116,7 +116,7 @@
           data, and evaluation tools are publicly available.
         </p>
         <div style="text-align:center;">
-          <span class="feature-pill">117 tasks</span>
+          <span class="feature-pill">107 tasks</span>
           <span class="feature-pill">5 capability axes</span>
           <span class="feature-pill">Bimanual 22-DoF dexterous hands</span>
           <span class="feature-pill">Graded predicate scoring</span>
@@ -134,7 +134,7 @@
         <h2 class="title is-2 section-title">Overview</h2>
         <img class="fig-img" src="./static/images/overview.png" alt="DexSimBench overview">
         <p class="fig-caption">
-          <b>DexSimBench overview.</b> The benchmark provides 117 declarative task specifications across five
+          <b>DexSimBench overview.</b> The benchmark provides 107 declarative task specifications across five
           capability axes, 8,110 success-validated teleoperated demonstrations on two bimanual embodiments equipped
           with dexterous hands, and graded predicate-based scoring under matched In-Domain and Out-of-Domain
           protocols. Five representative tasks, one per capability axis, are shown through frames of a real
@@ -142,59 +142,6 @@
           Limited-Demonstrations, and Generalization.
         </p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== SHOWCASE VIDEO ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container narrow">
-      <div class="has-text-centered">
-        <h2 class="title is-2 section-title">107 Tasks at a Glance</h2>
-        <video autoplay loop muted playsinline poster="./static/videos/showcase_poster.jpg"
-               style="width:100%;border:1px solid #bbb;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.10);">
-          <source src="./static/videos/showcase.mp4" type="video/mp4">
-        </video>
-        <p class="fig-caption">
-          A grid roll-out of 107 bimanual dexterous tasks across the five capability axes, each executed by
-          teleoperated demonstrations on the dual-Franka platform with 22-DoF dexterous hands.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== BENCHMARK COMPARISON ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container narrow">
-      <h2 class="title is-2 section-title">What Sets DexSimBench Apart</h2>
-      <div class="table-wrap">
-        <table class="dex-table">
-          <caption>
-            Benchmark comparison. &ldquo;Biman.&rdquo; = bimanual platform; &ldquo;Dex.&rdquo; = multi-fingered
-            dexterous hands; &ldquo;Graded&rdquo; = non-binary partial-credit scoring; &ldquo;OOD&rdquo; = built-in
-            out-of-domain protocol; &ldquo;Demos&rdquo; = released demonstrations.
-          </caption>
-          <thead>
-            <tr><th>Benchmark</th><th>Biman.</th><th>Dex.</th><th>Tasks</th><th>Graded</th><th>OOD</th><th>Demos</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Meta-World</td><td class="no">✗</td><td class="no">✗</td><td>50</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
-            <tr><td>RLBench</td><td class="no">✗</td><td class="no">✗</td><td>100</td><td class="no">✗</td><td class="no">✗</td><td>synth.</td></tr>
-            <tr><td>LIBERO</td><td class="no">✗</td><td class="no">✗</td><td>130</td><td class="no">✗</td><td class="no">✗</td><td>50/task</td></tr>
-            <tr><td>CALVIN</td><td class="no">✗</td><td class="no">✗</td><td>34</td><td>partial</td><td class="no">✗</td><td>teleop</td></tr>
-            <tr><td>RoboCasa</td><td class="no">✗</td><td class="no">✗</td><td>100</td><td class="no">✗</td><td class="no">✗</td><td>50–100/task</td></tr>
-            <tr><td>ManiSkill2</td><td class="no">✗</td><td class="no">✗</td><td>20+</td><td class="no">✗</td><td class="no">✗</td><td>synth.</td></tr>
-            <tr><td>Bi-DexHands</td><td class="yes">✓</td><td class="yes">✓</td><td>20+</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
-            <tr><td>RoboTwin 2.0</td><td class="yes">✓</td><td class="no">✗</td><td>50</td><td class="no">✗</td><td class="yes">✓</td><td>synth.</td></tr>
-            <tr><td>RoboDojo</td><td class="yes">✓</td><td class="no">✗</td><td>60</td><td class="no">✗</td><td class="yes">✓</td><td>teleop+synth.</td></tr>
-            <tr><td>Dexjoco</td><td class="yes">✓</td><td class="yes">✓</td><td>11</td><td class="no">✗</td><td class="yes">✓</td><td>teleop.</td></tr>
-            <tr class="ours"><td>DexSimBench (ours)</td><td class="yes">✓</td><td class="yes">✓</td><td><b>117</b></td><td class="yes">✓</td><td class="yes">✓</td><td><b>8,110 teleop</b></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="fig-caption" style="text-align:center;">
-        DexSimBench occupies the vacant corner of the design space: bimanual 22-DoF dexterous hands, five capability
-        axes, graded predicate scoring, and matched ID/OOD evaluation, with a large released teleoperation dataset.
-      </p>
     </div>
   </section>
 
@@ -216,19 +163,17 @@
               a library of 300 object assets, including 10 tasks on the Astribot S1 morphology. Measures how skills
               transfer across object geometry and embodiment.
             </div>
-            <img class="strip" src="./static/images/strip_generalization.png" alt="Generalization strip">
           </div>
         </div>
         <div class="column is-one-third">
           <div class="axis-card axis-if">
             <div class="axis-name">Instruction-Following</div>
-            <div class="axis-count">30 specifications</div>
+            <div class="axis-count">20 tasks</div>
             <div class="axis-desc">
               Verbal-command fidelity tested three ways: <i>count</i> variants (one vs.\ two plants/nails),
               <i>combo</i> tasks conjoining two instructions, and <i>switch</i> tasks that replace the instruction
               mid-episode. Wrong-object grasps terminate the episode.
             </div>
-            <img class="strip" src="./static/images/strip_instruction_following.png" alt="Instruction-Following strip">
           </div>
         </div>
         <div class="column is-one-third">
@@ -240,7 +185,6 @@
               <i>articraft_open_*</i> tasks &mdash; microwaves, cash registers, rice cookers &mdash; requiring
               force-aware actuation of hinged, sliding, and rotary joints.
             </div>
-            <img class="strip" src="./static/images/strip_limited_demonstrations.png" alt="Limited-Demonstrations strip">
           </div>
         </div>
         <div class="column is-one-third">
@@ -252,7 +196,6 @@
               &mdash; with 4–9 subtasks, 6.5 objects per scene, and demonstration durations averaging 50&nbsp;s (max
               97&nbsp;s). Success requires sustaining a plan far beyond the policy's action chunk.
             </div>
-            <img class="strip" src="./static/images/strip_long_horizon.png" alt="Long-Horizon strip">
           </div>
         </div>
         <div class="column is-one-third">
@@ -264,128 +207,20 @@
               FIFO basket-removal order, and remember targets shown only in a reveal phase. These probe genuine
               temporal state tracking rather than reactive control.
             </div>
-            <img class="strip" src="./static/images/strip_memory.png" alt="Memory strip">
           </div>
         </div>
         <div class="column is-one-third" style="display:flex;align-items:center;">
           <div class="axis-card" style="border-left-color:#888;">
-            <div class="axis-name" style="color:#555;">117 tasks &middot; 5 axes</div>
+            <div class="axis-name" style="color:#555;">107 tasks &middot; 5 axes</div>
             <div class="axis-count">graded &middot; ID/OOD</div>
             <div class="axis-desc">
-              Across the 117 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances.
+              Across the 107 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances.
               Each ships with a baked <code>__ood</code> variant with identical seed and initial state, so every
               policy sees identical out-of-domain conditions.
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== ID / OOD EVALUATION ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container narrow">
-      <div class="has-text-centered">
-        <h2 class="title is-2 section-title">Matched In-Domain / Out-of-Domain Evaluation</h2>
-        <p class="section-subtitle">
-          Every task ships with a baked <code>__ood</code> variant generated by five scripted transformations,
-          seeded deterministically &mdash; so in-domain performance and robustness are directly comparable.
-        </p>
-        <img class="fig-img" src="./static/images/ood_evaluation.png" alt="ID/OOD head-camera pairs">
-        <p class="fig-caption">
-          <b>Matched In-Domain (ID) / Out-of-Domain (OOD) head-camera pairs,</b> one task per OOD transform family.
-          Rows: scene retexturing + region offset (<i>Scene Randomization</i>), distractor injection
-          (<i>Distractor Injection</i>), articulated-object rescaling (<i>Object Rescaling</i>), and left-right
-          layout mirroring (<i>Layout Mirroring</i>). ID and OOD scenes share identical seed and initial state, so
-          the two frames differ only by the controlled shift; the colored frame marks the OOD column.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== DEXTEROUS EMBODIMENT ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container">
-      <h2 class="title is-2 section-title">Bimanual Dexterous Embodiment</h2>
-      <p class="section-subtitle">
-        Two 7-DoF arms equipped with 22-DoF dexterous hands &mdash; a 58-DoF action space with contact-rich finger
-        coordination invisible to a parallel-jaw success rate.
-      </p>
-      <div class="columns is-centered">
-        <div class="column is-half">
-          <img class="fig-img" src="./static/images/embodiment_dexterity.png" alt="Dexterity statistics">
-          <p class="fig-caption">
-            <b>Dexterity statistics of the 22-DoF hand.</b> (a) Top-view log-density of end-effector positions across
-            all 8,110 demonstrations; the two hands partition but substantially overlap the shared workspace. (b)
-            Per-joint usage of the 44 hand DoF &mdash; all five fingers engage.
-          </p>
-        </div>
-        <div class="column is-half">
-          <img class="fig-img" src="./static/images/pourice_replay.png" alt="Pour-ice replay">
-          <p class="fig-caption">
-            <b>Dexterity in space and time.</b> A replayed demonstration of the Memory-axis task <i>pour ice into
-            cups</i>: hand-and-object snapshots overlaid with time-gradient fingertip trajectories as the right hand
-            lifts and tilts the source cup &mdash; behavior a parallel-jaw action space cannot express.
-          </p>
-        </div>
-      </div>
-      <div class="columns is-centered" style="margin-top:1rem;">
-        <div class="column is-8 is-offset-2">
-          <img class="fig-img" src="./static/images/dexterity_atlas.png" alt="Dexterity structure atlas">
-          <p class="fig-caption">
-            <b>Dexterity structure of the Dexterous hand.</b> (a) 2D PCA of the bimanual 44-DoF posture over all
-            8,110 demonstrations; k-means clusters span a continuous manifold from open palm to fist. (b) Cumulative
-            PCA variance: only eight components capture 80% of motion, so the high-DoF hand is governed by a compact
-            synergy basis. (c) Per-joint loadings of the three leading grasp modes.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== DATASET ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container">
-      <h2 class="title is-2 section-title">A Large Teleoperated Dataset</h2>
-      <p class="section-subtitle">
-        8,110 success-validated episodes over 107 tasks &mdash; 6.25M frames, 69.5 hours, 94&nbsp;GB of 25&nbsp;Hz
-        teleoperation &mdash; in LeRobot v2.2 layout, directly consumable by mainstream VLA stacks.
-      </p>
-      <div class="container narrow" style="margin-bottom:1rem;">
-        <div class="has-text-centered">
-          <img class="fig-img" src="./static/images/dataset_stats.png" alt="Dataset statistics">
-          <p class="fig-caption">
-            <b>Dataset statistics.</b> (a) Scale per capability axis (log scale). (b) Episode-duration distributions.
-            (c) Subtask-count distribution per axis. (d) Usage of the 14 most frequent goal predicates across the 117
-            specifications. Long-Horizon and Memory episodes are ~2× longer than other axes.
-          </p>
-        </div>
-      </div>
-      <div class="container narrow" style="margin-bottom:1.5rem;">
-        <div class="has-text-centered">
-          <img class="fig-img" src="./static/images/object_library.png" alt="Object asset library">
-          <p class="fig-caption">
-            <b>Object asset library.</b> All 300 object assets instantiated across the 117 task specifications, grouped
-            by source: RoboCasa-Objaverse, Lightwheel, HOPE, scanned items, Turbosquid, Articraft, and purpose-built
-            assembly and control primitives. Each asset is simulated with its real mesh, mass, and friction.
-          </p>
-        </div>
-      </div>
-      <h3 class="title is-4 section-title" style="margin-top:1.5rem;">Teleoperation Hardware</h3>
-      <div class="columns is-centered teleop-pair">
-        <div class="column is-half">
-          <img src="./static/images/teleop_factr.png" alt="Exoskeleton glove (FACTR)">
-          <p>(a) Exoskeleton glove (FACTR) &mdash; joint-level finger tracking for high-dexterity work.</p>
-        </div>
-        <div class="column is-half">
-          <img src="./static/images/teleop_avp.png" alt="Apple Vision Pro headset">
-          <p>(b) Apple Vision Pro headset &mdash; wrist poses and 25 hand keypoints over WebXR.</p>
-        </div>
-      </div>
-      <p class="fig-caption" style="text-align:center;">
-        Both modalities feed a single optimization-based retargeting stack, yielding a unified 58-DoF data schema
-        across platforms and devices, and the same publish/subscribe interface as the physical system.
-      </p>
     </div>
   </section>
 
@@ -396,45 +231,10 @@
       <p class="section-subtitle">
         We benchmark seven recent VLA models under a unified protocol: 58-DoF joint control, the same all-category
         data mixture, 30k training steps on 8×H20 GPUs, and 3&nbsp;seeds × 10&nbsp;episodes per task per domain
-        (7,020 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
+        (6,420 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
       </p>
 
-      <!-- Baselines -->
-      <h3 class="title is-4 section-title" style="margin-top:1rem;">Evaluated VLA Baselines</h3>
-      <div class="table-wrap">
-        <table class="dex-table">
-          <caption>
-            Evaluated VLA baselines and shared protocol. &ldquo;Chunk&rdquo; = action chunk length;
-            &ldquo;Steps&rdquo; = denoising steps at inference. All models: 58-DoF joint control, 30k training steps,
-            8×H20.
-          </caption>
-          <thead>
-            <tr><th>Model</th><th>VLM backbone</th><th>Action expert</th><th>Chunk</th><th>Steps</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>π<sub>0.5</sub></td><td>PaliGemma-2B</td><td>300M flow-matching</td><td>50</td><td>10</td></tr>
-            <tr><td>GR00T-N1.7</td><td>Cosmos-R2-2B</td><td>DiT flow-matching</td><td>16</td><td>4</td></tr>
-            <tr><td>InternVLA-A1.5</td><td>Qwen3.5-2B</td><td>1B flow-matching</td><td>50</td><td>10</td></tr>
-            <tr><td>Galaxea G0.5</td><td>Qwen3.5-2B</td><td>flow-matching</td><td>32</td><td>1</td></tr>
-            <tr><td>OpenDM-DM05</td><td>Gemma3-4B</td><td>rectified flow</td><td>50</td><td>10</td></tr>
-            <tr><td>LingBot-VLA-v2</td><td>Qwen3-VL-4B</td><td>MoE flow (L1)</td><td>50</td><td>10</td></tr>
-            <tr><td>Xiaomi XR1</td><td>Qwen3-VL-4B</td><td>60-D DiT flow</td><td>30</td><td>5</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Overall figure + leaderboard gif icon -->
-      <div class="has-text-centered" style="margin-top:1.5rem;">
-        <img class="fig-img" src="./static/images/results_overall.png" alt="Overall VLA performance"
-             style="max-width:760px;">
-        <p class="fig-caption">
-          <b>Overall performance of the evaluated VLA models.</b> Graded subtask score in [0,100] (crediting partial
-          progress) and strict success rate (%) per model over all 117 task specifications. The graded score
-          separates near-complete attempts from total failures that the binary success rate collapses.
-        </p>
-      </div>
-
-      <!-- Leaderboard animated gif (the [Image #1] icon) -->
+      <!-- Leaderboard animated gif icon ([Image #3]) -->
       <div class="leaderboard-wrap">
         <img src="./static/images/leaderboard.gif" alt="Animated leaderboard of overall VLA performance">
       </div>
@@ -498,7 +298,8 @@
         memory- and horizon-bound tasks), <b>ID→OOD degradation</b> (localizing robustness failures to texture/lighting
         shift, layout offset, distractor interference, or mirroring), and <b>data efficiency</b> (the
         Limited-Demonstrations axis isolates the 30-demo regime). Graded subtask scores further distinguish
-        &ldquo;near miss&rdquo; from complete failure on long-horizon tasks.
+        &ldquo;near miss&rdquo; from complete failure on long-horizon tasks, where strict success rates are expected
+        to floor near zero for all current models.
       </p>
     </div>
   </section>
