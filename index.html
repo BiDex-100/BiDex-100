@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="DexSimBench: A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DexSimBench</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/dexsimbench.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero is-link is-fullheight hero-dex">
+    <div class="hero-video" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:101%;height:101%;">
+      <video playsinline autoplay muted loop poster="./static/videos/showcase_poster.jpg"
+             style="width:100%;height:100%;object-fit:cover;">
+        <source src="./static/videos/showcase.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Nav -->
+    <div class="hero-head is-hidden-mobile">
+      <header class="navbar navdex">
+        <div class="container is-size-5">
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
+                <span class="icon" style="margin-right:5px;"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
+                <span class="icon" style="margin-right:5px;"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
+                <span class="icon" style="margin-right:5px;"><i class="fas fa-database"></i></span>
+                <span>Dataset</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!-- Body -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title publication-title hero-title">DexSimBench</h1>
+        <h2 class="subtitle publication-title hero-subtitle">
+          A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks
+        </h2>
+        <p class="hero-authors">
+          <a href="mailto:yongw@zju.edu.cn" style="color:#fff;">Yong Wang</a><sup>1</sup>,
+          <a href="mailto:zkechengzk@gmail.com" style="color:#fff;">Kecheng Zheng</a><sup>2</sup>,
+          <a href="mailto:huachen@intl.zju.edu.cn" style="color:#fff;">Hua Chen</a><sup>3</sup>,
+          <a href="mailto:cxu@zju.edu.cn" style="color:#fff;">Chao Xu</a><sup>1</sup>,
+          <a href="mailto:zkechengzk@gmail.com" style="color:#fff;">Yujun Shen</a><sup>2</sup>,
+          <a href="mailto:shengze_cai@zju.edu.cn" style="color:#fff;">Shengze Cai</a><sup>1,*</sup>
+        </p>
+        <p class="hero-affil" style="margin-top:0.4rem;">
+          <sup>1</sup>Zhejiang University &nbsp; <sup>2</sup>Ant Group &nbsp; <sup>3</sup>ZJU-UIUC Institute, Zhejiang University
+        </p>
+        <div class="btn-row">
+          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+            <i class="ai ai-arxiv"></i> Paper
+          </a>
+          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+            <i class="fas fa-database"></i> Dataset
+          </a>
+          <a class="btn-dex" href="#experiments">
+            <i class="fas fa-table"></i> Results
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABSTRACT ===================== -->
+  <section class="section" style="padding-top:3rem;">
+    <div class="container narrow">
+      <h2 class="title is-2 section-title">Abstract</h2>
+      <div class="content">
+        <p style="line-height:1.7;">
+          As vision-language-action (VLA) models scale to larger demonstration corpora, narrow pick-and-place
+          benchmarks are becoming less informative. Progress now depends on whether models can handle capability
+          limits such as <b>memory</b>, <b>long-horizon control</b>, <b>changing instructions</b>, <b>few-shot
+          learning</b>, and <b>visual shifts</b>. These limits are especially important for bimanual dexterous
+          manipulation, where two multi-fingered hands must coordinate contact-rich actions beyond the scope of
+          parallel-jaw settings. We present <b>DexSimBench</b>, a simulation benchmark for measuring these
+          capabilities in bimanual dexterous manipulation. It includes <b>117 tasks</b> across five axes:
+          Generalization, Instruction-Following, Limited Demonstrations, Long Horizon, and Memory. Tasks are defined
+          through compositional goals built from typed predicates, enabling <b>graded evaluation</b> that identifies
+          partial progress and specific failure modes. Each task also has an out-of-domain variant with controlled
+          visual and spatial changes, allowing direct measurement of robustness. DexSimBench supports two 22-DoF
+          hand embodiments and provides <b>8,110 success-validated teleoperated demonstrations</b>, totaling 6.25M
+          frames and 69.5 hours. We evaluate seven recent vision-language-action models under a unified protocol,
+          establishing baselines for capability-specific performance, robustness, and data efficiency. Code, tasks,
+          data, and evaluation tools are publicly available.
+        </p>
+        <div style="text-align:center;">
+          <span class="feature-pill">117 tasks</span>
+          <span class="feature-pill">5 capability axes</span>
+          <span class="feature-pill">Bimanual 22-DoF dexterous hands</span>
+          <span class="feature-pill">Graded predicate scoring</span>
+          <span class="feature-pill">Matched ID / OOD</span>
+          <span class="feature-pill">8,110 teleop demos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container narrow">
+      <div class="has-text-centered">
+        <h2 class="title is-2 section-title">Overview</h2>
+        <img class="fig-img" src="./static/images/overview.png" alt="DexSimBench overview">
+        <p class="fig-caption">
+          <b>DexSimBench overview.</b> The benchmark provides 117 declarative task specifications across five
+          capability axes, 8,110 success-validated teleoperated demonstrations on two bimanual embodiments equipped
+          with dexterous hands, and graded predicate-based scoring under matched In-Domain and Out-of-Domain
+          protocols. Five representative tasks, one per capability axis, are shown through frames of a real
+          demonstration with its language instruction: Memory, Long-Horizon, Instruction-Following,
+          Limited-Demonstrations, and Generalization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOWCASE VIDEO ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container narrow">
+      <div class="has-text-centered">
+        <h2 class="title is-2 section-title">107 Tasks at a Glance</h2>
+        <video autoplay loop muted playsinline poster="./static/videos/showcase_poster.jpg"
+               style="width:100%;border:1px solid #bbb;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.10);">
+          <source src="./static/videos/showcase.mp4" type="video/mp4">
+        </video>
+        <p class="fig-caption">
+          A grid roll-out of 107 bimanual dexterous tasks across the five capability axes, each executed by
+          teleoperated demonstrations on the dual-Franka platform with 22-DoF dexterous hands.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BENCHMARK COMPARISON ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container narrow">
+      <h2 class="title is-2 section-title">What Sets DexSimBench Apart</h2>
+      <div class="table-wrap">
+        <table class="dex-table">
+          <caption>
+            Benchmark comparison. &ldquo;Biman.&rdquo; = bimanual platform; &ldquo;Dex.&rdquo; = multi-fingered
+            dexterous hands; &ldquo;Graded&rdquo; = non-binary partial-credit scoring; &ldquo;OOD&rdquo; = built-in
+            out-of-domain protocol; &ldquo;Demos&rdquo; = released demonstrations.
+          </caption>
+          <thead>
+            <tr><th>Benchmark</th><th>Biman.</th><th>Dex.</th><th>Tasks</th><th>Graded</th><th>OOD</th><th>Demos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Meta-World</td><td class="no">✗</td><td class="no">✗</td><td>50</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+            <tr><td>RLBench</td><td class="no">✗</td><td class="no">✗</td><td>100</td><td class="no">✗</td><td class="no">✗</td><td>synth.</td></tr>
+            <tr><td>LIBERO</td><td class="no">✗</td><td class="no">✗</td><td>130</td><td class="no">✗</td><td class="no">✗</td><td>50/task</td></tr>
+            <tr><td>CALVIN</td><td class="no">✗</td><td class="no">✗</td><td>34</td><td>partial</td><td class="no">✗</td><td>teleop</td></tr>
+            <tr><td>RoboCasa</td><td class="no">✗</td><td class="no">✗</td><td>100</td><td class="no">✗</td><td class="no">✗</td><td>50–100/task</td></tr>
+            <tr><td>ManiSkill2</td><td class="no">✗</td><td class="no">✗</td><td>20+</td><td class="no">✗</td><td class="no">✗</td><td>synth.</td></tr>
+            <tr><td>Bi-DexHands</td><td class="yes">✓</td><td class="yes">✓</td><td>20+</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+            <tr><td>RoboTwin 2.0</td><td class="yes">✓</td><td class="no">✗</td><td>50</td><td class="no">✗</td><td class="yes">✓</td><td>synth.</td></tr>
+            <tr><td>RoboDojo</td><td class="yes">✓</td><td class="no">✗</td><td>60</td><td class="no">✗</td><td class="yes">✓</td><td>teleop+synth.</td></tr>
+            <tr><td>Dexjoco</td><td class="yes">✓</td><td class="yes">✓</td><td>11</td><td class="no">✗</td><td class="yes">✓</td><td>teleop.</td></tr>
+            <tr class="ours"><td>DexSimBench (ours)</td><td class="yes">✓</td><td class="yes">✓</td><td><b>117</b></td><td class="yes">✓</td><td class="yes">✓</td><td><b>8,110 teleop</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fig-caption" style="text-align:center;">
+        DexSimBench occupies the vacant corner of the design space: bimanual 22-DoF dexterous hands, five capability
+        axes, graded predicate scoring, and matched ID/OOD evaluation, with a large released teleoperation dataset.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FIVE CAPABILITY AXES ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <h2 class="title is-2 section-title">Five Capability Axes</h2>
+      <p class="section-subtitle">
+        The suite design turns &ldquo;is the policy good?&rdquo; into &ldquo;<i>what</i> is the policy good at?&rdquo;
+        Results form a capability profile rather than a single aggregate score.
+      </p>
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <div class="axis-card axis-gen">
+            <div class="axis-name">Generalization</div>
+            <div class="axis-count">40 tasks</div>
+            <div class="axis-desc">
+              Single- and few-stage skills &mdash; lifting, placement, insertion, threading, and cooking &mdash; over
+              a library of 300 object assets, including 10 tasks on the Astribot S1 morphology. Measures how skills
+              transfer across object geometry and embodiment.
+            </div>
+            <img class="strip" src="./static/images/strip_generalization.png" alt="Generalization strip">
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="axis-card axis-if">
+            <div class="axis-name">Instruction-Following</div>
+            <div class="axis-count">30 specifications</div>
+            <div class="axis-desc">
+              Verbal-command fidelity tested three ways: <i>count</i> variants (one vs.\ two plants/nails),
+              <i>combo</i> tasks conjoining two instructions, and <i>switch</i> tasks that replace the instruction
+              mid-episode. Wrong-object grasps terminate the episode.
+            </div>
+            <img class="strip" src="./static/images/strip_instruction_following.png" alt="Instruction-Following strip">
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="axis-card axis-ld">
+            <div class="axis-name">Limited-Demonstrations</div>
+            <div class="axis-count">27 tasks</div>
+            <div class="axis-desc">
+              Data-scarce skill acquisition: every task ships with only 30 demonstrations. Includes 11
+              <i>articraft_open_*</i> tasks &mdash; microwaves, cash registers, rice cookers &mdash; requiring
+              force-aware actuation of hinged, sliding, and rotary joints.
+            </div>
+            <img class="strip" src="./static/images/strip_limited_demonstrations.png" alt="Limited-Demonstrations strip">
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="axis-card axis-lh">
+            <div class="axis-name">Long-Horizon</div>
+            <div class="axis-count">10 tasks</div>
+            <div class="axis-desc">
+              Multi-stage chores &mdash; barbecue grilling, fridge restocking, dessert plating, recycling sorting
+              &mdash; with 4–9 subtasks, 6.5 objects per scene, and demonstration durations averaging 50&nbsp;s (max
+              97&nbsp;s). Success requires sustaining a plan far beyond the policy's action chunk.
+            </div>
+            <img class="strip" src="./static/images/strip_long_horizon.png" alt="Long-Horizon strip">
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="axis-card axis-mem">
+            <div class="axis-name">Memory</div>
+            <div class="axis-count">10 tasks</div>
+            <div class="axis-desc">
+              Latent-state tracking under perceptual aliasing: recolor cubes hidden behind a button sequence, recall
+              FIFO basket-removal order, and remember targets shown only in a reveal phase. These probe genuine
+              temporal state tracking rather than reactive control.
+            </div>
+            <img class="strip" src="./static/images/strip_memory.png" alt="Memory strip">
+          </div>
+        </div>
+        <div class="column is-one-third" style="display:flex;align-items:center;">
+          <div class="axis-card" style="border-left-color:#888;">
+            <div class="axis-name" style="color:#555;">117 tasks &middot; 5 axes</div>
+            <div class="axis-count">graded &middot; ID/OOD</div>
+            <div class="axis-desc">
+              Across the 117 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances.
+              Each ships with a baked <code>__ood</code> variant with identical seed and initial state, so every
+              policy sees identical out-of-domain conditions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ID / OOD EVALUATION ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container narrow">
+      <div class="has-text-centered">
+        <h2 class="title is-2 section-title">Matched In-Domain / Out-of-Domain Evaluation</h2>
+        <p class="section-subtitle">
+          Every task ships with a baked <code>__ood</code> variant generated by five scripted transformations,
+          seeded deterministically &mdash; so in-domain performance and robustness are directly comparable.
+        </p>
+        <img class="fig-img" src="./static/images/ood_evaluation.png" alt="ID/OOD head-camera pairs">
+        <p class="fig-caption">
+          <b>Matched In-Domain (ID) / Out-of-Domain (OOD) head-camera pairs,</b> one task per OOD transform family.
+          Rows: scene retexturing + region offset (<i>Scene Randomization</i>), distractor injection
+          (<i>Distractor Injection</i>), articulated-object rescaling (<i>Object Rescaling</i>), and left-right
+          layout mirroring (<i>Layout Mirroring</i>). ID and OOD scenes share identical seed and initial state, so
+          the two frames differ only by the controlled shift; the colored frame marks the OOD column.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEXTEROUS EMBODIMENT ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <h2 class="title is-2 section-title">Bimanual Dexterous Embodiment</h2>
+      <p class="section-subtitle">
+        Two 7-DoF arms equipped with 22-DoF dexterous hands &mdash; a 58-DoF action space with contact-rich finger
+        coordination invisible to a parallel-jaw success rate.
+      </p>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <img class="fig-img" src="./static/images/embodiment_dexterity.png" alt="Dexterity statistics">
+          <p class="fig-caption">
+            <b>Dexterity statistics of the 22-DoF hand.</b> (a) Top-view log-density of end-effector positions across
+            all 8,110 demonstrations; the two hands partition but substantially overlap the shared workspace. (b)
+            Per-joint usage of the 44 hand DoF &mdash; all five fingers engage.
+          </p>
+        </div>
+        <div class="column is-half">
+          <img class="fig-img" src="./static/images/pourice_replay.png" alt="Pour-ice replay">
+          <p class="fig-caption">
+            <b>Dexterity in space and time.</b> A replayed demonstration of the Memory-axis task <i>pour ice into
+            cups</i>: hand-and-object snapshots overlaid with time-gradient fingertip trajectories as the right hand
+            lifts and tilts the source cup &mdash; behavior a parallel-jaw action space cannot express.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered" style="margin-top:1rem;">
+        <div class="column is-8 is-offset-2">
+          <img class="fig-img" src="./static/images/dexterity_atlas.png" alt="Dexterity structure atlas">
+          <p class="fig-caption">
+            <b>Dexterity structure of the Dexterous hand.</b> (a) 2D PCA of the bimanual 44-DoF posture over all
+            8,110 demonstrations; k-means clusters span a continuous manifold from open palm to fist. (b) Cumulative
+            PCA variance: only eight components capture 80% of motion, so the high-DoF hand is governed by a compact
+            synergy basis. (c) Per-joint loadings of the three leading grasp modes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DATASET ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <h2 class="title is-2 section-title">A Large Teleoperated Dataset</h2>
+      <p class="section-subtitle">
+        8,110 success-validated episodes over 107 tasks &mdash; 6.25M frames, 69.5 hours, 94&nbsp;GB of 25&nbsp;Hz
+        teleoperation &mdash; in LeRobot v2.2 layout, directly consumable by mainstream VLA stacks.
+      </p>
+      <div class="container narrow" style="margin-bottom:1rem;">
+        <div class="has-text-centered">
+          <img class="fig-img" src="./static/images/dataset_stats.png" alt="Dataset statistics">
+          <p class="fig-caption">
+            <b>Dataset statistics.</b> (a) Scale per capability axis (log scale). (b) Episode-duration distributions.
+            (c) Subtask-count distribution per axis. (d) Usage of the 14 most frequent goal predicates across the 117
+            specifications. Long-Horizon and Memory episodes are ~2× longer than other axes.
+          </p>
+        </div>
+      </div>
+      <div class="container narrow" style="margin-bottom:1.5rem;">
+        <div class="has-text-centered">
+          <img class="fig-img" src="./static/images/object_library.png" alt="Object asset library">
+          <p class="fig-caption">
+            <b>Object asset library.</b> All 300 object assets instantiated across the 117 task specifications, grouped
+            by source: RoboCasa-Objaverse, Lightwheel, HOPE, scanned items, Turbosquid, Articraft, and purpose-built
+            assembly and control primitives. Each asset is simulated with its real mesh, mass, and friction.
+          </p>
+        </div>
+      </div>
+      <h3 class="title is-4 section-title" style="margin-top:1.5rem;">Teleoperation Hardware</h3>
+      <div class="columns is-centered teleop-pair">
+        <div class="column is-half">
+          <img src="./static/images/teleop_factr.png" alt="Exoskeleton glove (FACTR)">
+          <p>(a) Exoskeleton glove (FACTR) &mdash; joint-level finger tracking for high-dexterity work.</p>
+        </div>
+        <div class="column is-half">
+          <img src="./static/images/teleop_avp.png" alt="Apple Vision Pro headset">
+          <p>(b) Apple Vision Pro headset &mdash; wrist poses and 25 hand keypoints over WebXR.</p>
+        </div>
+      </div>
+      <p class="fig-caption" style="text-align:center;">
+        Both modalities feed a single optimization-based retargeting stack, yielding a unified 58-DoF data schema
+        across platforms and devices, and the same publish/subscribe interface as the physical system.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIMENTS ===================== -->
+  <section class="section" id="experiments" style="padding-top:1rem;">
+    <div class="container">
+      <h2 class="title is-2 section-title">Experiments</h2>
+      <p class="section-subtitle">
+        We benchmark seven recent VLA models under a unified protocol: 58-DoF joint control, the same all-category
+        data mixture, 30k training steps on 8×H20 GPUs, and 3&nbsp;seeds × 10&nbsp;episodes per task per domain
+        (7,020 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
+      </p>
+
+      <!-- Baselines -->
+      <h3 class="title is-4 section-title" style="margin-top:1rem;">Evaluated VLA Baselines</h3>
+      <div class="table-wrap">
+        <table class="dex-table">
+          <caption>
+            Evaluated VLA baselines and shared protocol. &ldquo;Chunk&rdquo; = action chunk length;
+            &ldquo;Steps&rdquo; = denoising steps at inference. All models: 58-DoF joint control, 30k training steps,
+            8×H20.
+          </caption>
+          <thead>
+            <tr><th>Model</th><th>VLM backbone</th><th>Action expert</th><th>Chunk</th><th>Steps</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>π<sub>0.5</sub></td><td>PaliGemma-2B</td><td>300M flow-matching</td><td>50</td><td>10</td></tr>
+            <tr><td>GR00T-N1.7</td><td>Cosmos-R2-2B</td><td>DiT flow-matching</td><td>16</td><td>4</td></tr>
+            <tr><td>InternVLA-A1.5</td><td>Qwen3.5-2B</td><td>1B flow-matching</td><td>50</td><td>10</td></tr>
+            <tr><td>Galaxea G0.5</td><td>Qwen3.5-2B</td><td>flow-matching</td><td>32</td><td>1</td></tr>
+            <tr><td>OpenDM-DM05</td><td>Gemma3-4B</td><td>rectified flow</td><td>50</td><td>10</td></tr>
+            <tr><td>LingBot-VLA-v2</td><td>Qwen3-VL-4B</td><td>MoE flow (L1)</td><td>50</td><td>10</td></tr>
+            <tr><td>Xiaomi XR1</td><td>Qwen3-VL-4B</td><td>60-D DiT flow</td><td>30</td><td>5</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Overall figure + leaderboard gif icon -->
+      <div class="has-text-centered" style="margin-top:1.5rem;">
+        <img class="fig-img" src="./static/images/results_overall.png" alt="Overall VLA performance"
+             style="max-width:760px;">
+        <p class="fig-caption">
+          <b>Overall performance of the evaluated VLA models.</b> Graded subtask score in [0,100] (crediting partial
+          progress) and strict success rate (%) per model over all 117 task specifications. The graded score
+          separates near-complete attempts from total failures that the binary success rate collapses.
+        </p>
+      </div>
+
+      <!-- Leaderboard animated gif (the [Image #1] icon) -->
+      <div class="leaderboard-wrap">
+        <img src="./static/images/leaderboard.gif" alt="Animated leaderboard of overall VLA performance">
+      </div>
+      <p class="fig-caption" style="text-align:center;">
+        Animated leaderboard replaying overall graded scores across the evaluated VLA models and five capability axes.
+      </p>
+
+      <!-- ID results -->
+      <h3 class="title is-4 section-title" style="margin-top:2rem;">Main Results &mdash; In-Domain (ID)</h3>
+      <p class="results-legend">
+        graded score / success rate (%) per capability axis. <b class="best">Bold</b> = best in column.
+      </p>
+      <div class="table-wrap">
+        <table class="dex-table results-table">
+          <thead>
+            <tr>
+              <th>Model</th><th>Generalization</th><th>Instruct.-Foll.</th>
+              <th>Limited-Demo.</th><th>Long-Horizon</th><th>Memory</th><th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>LingBot-VLA-v2</td><td class="rescell">77.7 / 63.4</td><td class="rescell">51.8 / 30.4</td><td class="rescell">71.9 / 63.3</td><td class="rescell">69.4 / 41.6</td><td class="rescell">43.4 / 27.2</td><td class="rescell">67.4 / 51.8</td></tr>
+            <tr><td>π<sub>0.5</sub></td><td class="rescell">74.1 / 57.5</td><td class="rescell">50.7 / 31.4</td><td class="rescell">70.9 / 62.3</td><td class="rescell">67.7 / 42.0</td><td class="rescell">51.0 / 35.6</td><td class="rescell">66.1 / 50.3</td></tr>
+            <tr><td>GR00T-N1.7</td><td class="rescell">68.5 / 49.6</td><td class="rescell">48.2 / 21.0</td><td class="rescell">70.8 / 60.2</td><td class="rescell">61.6 / 32.6</td><td class="rescell">35.1 / 20.6</td><td class="rescell">61.5 / 42.7</td></tr>
+            <tr><td>InternVLA-A1.5</td><td class="rescell">5.6 / 0.1</td><td class="rescell">16.2 / 0.3</td><td class="rescell">9.1 / 4.5</td><td class="rescell">1.5 / 0.0</td><td class="rescell">0.5 / 0.0</td><td class="rescell">7.6 / 1.2</td></tr>
+            <tr><td>Galaxea G0.5</td><td class="rescell">37.0 / 19.5</td><td class="rescell">23.9 / 3.1</td><td class="rescell">41.3 / 28.0</td><td class="rescell">18.1 / 2.6</td><td class="rescell">17.2 / 4.6</td><td class="rescell">32.0 / 15.6</td></tr>
+            <tr><td>OpenDM-DM05</td><td class="rescell">55.6 / 35.4</td><td class="rescell">27.4 / 3.1</td><td class="rescell">47.2 / 33.2</td><td class="rescell">20.1 / 3.8</td><td class="rescell">27.5 / 15.0</td><td class="rescell">42.2 / 24.0</td></tr>
+            <tr><td>Xiaomi XR1</td><td class="rescell">22.7 / 5.6</td><td class="rescell">17.6 / 0.3</td><td class="rescell">16.5 / 4.4</td><td class="rescell">13.3 / 0.2</td><td class="rescell">7.0 / 0.0</td><td class="rescell">17.8 / 3.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- OOD results -->
+      <h3 class="title is-4 section-title" style="margin-top:2rem;">Main Results &mdash; Out-of-Domain (OOD)</h3>
+      <p class="results-legend">
+        graded score / success rate (%) per capability axis. <b class="best">Bold</b> = best in column.
+      </p>
+      <div class="table-wrap">
+        <table class="dex-table results-table">
+          <thead>
+            <tr>
+              <th>Model</th><th>Generalization</th><th>Instruct.-Foll.</th>
+              <th>Limited-Demo.</th><th>Long-Horizon</th><th>Memory</th><th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>LingBot-VLA-v2</td><td class="rescell">28.0 / 10.5</td><td class="rescell">34.3 / 6.5</td><td class="rescell">24.9 / 16.5</td><td class="rescell">22.0 / 4.6</td><td class="rescell">24.6 / 13.4</td><td class="rescell">27.5 / 11.0</td></tr>
+            <tr><td>π<sub>0.5</sub></td><td class="rescell">28.6 / 12.1</td><td class="rescell">32.8 / 7.8</td><td class="rescell">24.1 / 14.6</td><td class="rescell">19.4 / 4.0</td><td class="rescell">27.0 / 17.4</td><td class="rescell">27.2 / 11.7</td></tr>
+            <tr><td>GR00T-N1.7</td><td class="rescell">25.0 / 8.4</td><td class="rescell">41.4 / 10.4</td><td class="rescell">31.7 / 21.3</td><td class="rescell">32.4 / 10.0</td><td class="rescell">21.7 / 6.0</td><td class="rescell">30.1 / 12.0</td></tr>
+            <tr><td>InternVLA-A1.5</td><td class="rescell">4.2 / 0.1</td><td class="rescell">15.1 / 0.0</td><td class="rescell">6.9 / 4.4</td><td class="rescell">2.5 / 0.0</td><td class="rescell">0.0 / 0.0</td><td class="rescell">6.4 / 1.2</td></tr>
+            <tr><td>Galaxea G0.5</td><td class="rescell">8.4 / 1.1</td><td class="rescell">16.1 / 0.0</td><td class="rescell">7.9 / 2.8</td><td class="rescell">5.2 / 0.0</td><td class="rescell">2.6 / 0.0</td><td class="rescell">8.9 / 1.1</td></tr>
+            <tr><td>OpenDM-DM05</td><td class="rescell">21.8 / 6.6</td><td class="rescell">21.2 / 0.6</td><td class="rescell">15.2 / 6.7</td><td class="rescell">16.4 / 1.6</td><td class="rescell">14.9 / 7.2</td><td class="rescell">18.8 / 5.1</td></tr>
+            <tr><td>Xiaomi XR1</td><td class="rescell">8.1 / 0.2</td><td class="rescell">15.7 / 0.0</td><td class="rescell">4.2 / 0.6</td><td class="rescell">9.4 / 0.0</td><td class="rescell">6.6 / 0.0</td><td class="rescell">8.5 / 0.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="fig-caption" style="max-width:1020px;">
+        Beyond the headline numbers, the benchmark supports three analyses that binary, single-axis benchmarks
+        cannot: <b>capability profiles</b> (whether a model's strength comes from short-horizon skills or extends to
+        memory- and horizon-bound tasks), <b>ID→OOD degradation</b> (localizing robustness failures to texture/lighting
+        shift, layout offset, distractor interference, or mirroring), and <b>data efficiency</b> (the
+        Limited-Demonstrations axis isolates the 30-demo regime). Graded subtask scores further distinguish
+        &ldquo;near miss&rdquo; from complete failure on long-horizon tasks.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== CITATION ===================== -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container narrow">
+      <h2 class="title is-2 section-title">Citation</h2>
+      <div class="citation">@misc{dexsimbench2025,
+  title         = {DexSimBench: A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks},
+  author        = {Yong Wang and Kecheng Zheng and Hua Chen and Chao Xu and Yujun Shen and Shengze Cai},
+  year          = {2025},
+  howpublished  = {https://github.com/dexsimbench/DexSimBench},
+}</div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Project page template adapted from
+          <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a> and the WVLA project page.
+          &nbsp;&middot;&nbsp;
+          Code, tasks, data, and evaluation tooling are released at
+          <a href="https://github.com/dexsimbench/DexSimBench">github.com/dexsimbench/DexSimBench</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Bold the best graded-score and best success-rate per column in each results table.
+    (function () {
+      document.querySelectorAll("table.results-table").forEach(function (tbl) {
+        var rows = Array.prototype.slice.call(tbl.querySelectorAll("tbody tr"));
+        if (!rows.length) return;
+        var ncols = rows[0].children.length;
+        for (var c = 1; c < ncols; c++) {
+          var bestS = -Infinity, bestR = -Infinity;
+          rows.forEach(function (r) {
+            var parts = r.children[c].textContent.split("/").map(function (x) { return parseFloat(x.trim()); });
+            if (!isNaN(parts[0]) && parts[0] > bestS) bestS = parts[0];
+            if (!isNaN(parts[1]) && parts[1] > bestR) bestR = parts[1];
+          });
+          rows.forEach(function (r) {
+            var cell = r.children[c];
+            var parts = cell.textContent.split("/").map(function (x) { return x.trim(); });
+            var sB = parseFloat(parts[0]) === bestS && bestS > 0;
+            var rB = parseFloat(parts[1]) === bestR && bestR > 0;
+            cell.innerHTML = (sB ? '<b class="best">' : '') + parts[0] + '</b>' + " / " +
+                             (rB ? '<b class="best">' : '') + parts[1] + '</b>';
+          });
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

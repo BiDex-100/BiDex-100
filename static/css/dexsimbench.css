@@ -1,0 +1,247 @@
+/* DexSimBench project-page custom styles (on top of bulma + wvla index.css) */
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* ---------- Section helpers ---------- */
+.section-title {
+  font-family: 'Google Sans', sans-serif;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #555;
+  max-width: 820px;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.fig-caption {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 0.6rem;
+  text-align: justify;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.narrow {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ---------- Hero ---------- */
+.hero.hero-dex {
+  overflow: hidden;
+  position: relative;
+}
+.hero.hero-dex .overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.55) 100%);
+}
+.hero.hero-dex .hero-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(3rem, 9vw, 8rem);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.85);
+  line-height: 1.1;
+}
+.hero.hero-dex .hero-subtitle {
+  font-family: 'Google Sans', sans-serif;
+  font-size: clamp(1.1rem, 3vw, 2.2rem);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.85);
+  margin-top: 0.5rem;
+}
+.hero.hero-dex .hero-authors {
+  font-size: clamp(0.85rem, 1.7vw, 1.2rem);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.85);
+}
+.hero.hero-dex .hero-authors sup { font-size: 0.7em; }
+.hero.hero-dex .hero-affil {
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.85);
+  opacity: 0.92;
+}
+
+/* nav link override (dark video bg) */
+.navdex .navbar-item {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+.navdex .navbar-item:hover {
+  background: rgba(255,255,255,0.12) !important;
+  color: #fff;
+}
+
+/* ---------- Buttons ---------- */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+.btn-dex {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.55);
+  color: #fff !important;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  transition: background .15s ease;
+}
+.btn-dex:hover {
+  background: rgba(255,255,255,0.28);
+  color: #fff !important;
+}
+
+/* ---------- Capability cards ---------- */
+.axis-card {
+  border-left: 6px solid #bbb;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  height: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.axis-card .axis-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+.axis-card .axis-count {
+  display: inline-block;
+  font-size: 0.8rem;
+  background: #eef;
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #445;
+  margin-bottom: 0.5rem;
+}
+.axis-card .axis-desc { font-size: 0.88rem; color: #444; line-height: 1.45; }
+.axis-card img.strip { width: 100%; border-radius: 5px; margin-top: 0.6rem; border: 1px solid #ddd; }
+.axis-gen  { border-left-color: #1A5276; }
+.axis-if   { border-left-color: #196F3D; }
+.axis-ld   { border-left-color: #B9770E; }
+.axis-lh   { border-left-color: #C0392B; }
+.axis-mem  { border-left-color: #8E44AD; }
+.axis-gen  .axis-name { color: #1A5276; }
+.axis-if   .axis-name { color: #196F3D; }
+.axis-ld   .axis-name { color: #B9770E; }
+.axis-lh   .axis-name { color: #C0392B; }
+.axis-mem  .axis-name { color: #8E44AD; }
+
+/* ---------- Feature pills ---------- */
+.feature-pill {
+  display: inline-block;
+  background: #eef3f9;
+  color: #1A5276;
+  border: 1px solid #c4d4e6;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  margin: 4px;
+  font-weight: 600;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 0 auto 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 1100px;
+}
+table.dex-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+table.dex-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #555;
+  padding: 0.4rem 0.6rem 0.6rem;
+  line-height: 1.4;
+}
+table.dex-table th, table.dex-table td {
+  padding: 6px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ececec;
+}
+table.dex-table thead th {
+  background: #1A5276;
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+table.dex-table tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+table.dex-table tbody tr:nth-child(even) { background: #f6f8fb; }
+table.dex-table tbody tr.ours {
+  background: #e8f4ec !important;
+  font-weight: 700;
+}
+table.dex-table .yes { color: #1e7e34; font-weight: 700; }
+table.dex-table .no  { color: #c0392b; }
+table.dex-table .rescell { font-variant-numeric: tabular-nums; }
+table.dex-table b.best {
+  color: #1A5276;
+  font-weight: 800;
+}
+.results-legend { font-size: 0.8rem; color: #777; text-align: center; margin-bottom: 0.8rem; }
+.results-legend b.best { color: #1A5276; }
+
+/* ---------- Leaderboard gif ---------- */
+.leaderboard-wrap {
+  text-align: center;
+  margin: 1rem auto 0.4rem;
+}
+.leaderboard-wrap img {
+  max-width: 920px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* ---------- Figures ---------- */
+.fig-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* citation block */
+.citation {
+  background: #f6f6f6;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  text-align: left;
+  max-width: 860px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* teleop pair */
+.teleop-pair img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+.teleop-pair p { font-size: 0.85rem; color: #555; margin-top: 0.3rem; }
