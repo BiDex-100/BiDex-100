@@ -108,7 +108,7 @@
           learning</b>, and <b>visual shifts</b>. These limits are especially important for bimanual dexterous
           manipulation, where two multi-fingered hands must coordinate contact-rich actions beyond the scope of
           parallel-jaw settings. We present <b>DexSimBench</b>, a simulation benchmark for measuring these
-          capabilities in bimanual dexterous manipulation. It includes <b>107 tasks</b> across five axes:
+          capabilities in bimanual dexterous manipulation. It includes <b>106 tasks</b> across five axes:
           Generalization, Instruction-Following, Limited Demonstrations, Long Horizon, and Memory. Tasks are defined
           through compositional goals built from typed predicates, enabling <b>graded evaluation</b> that identifies
           partial progress and specific failure modes. Each task also has an out-of-domain variant with controlled
@@ -119,7 +119,7 @@
           data, and evaluation tools are publicly available.
         </p>
         <div style="text-align:center;">
-          <span class="feature-pill">107 tasks</span>
+          <span class="feature-pill">106 tasks</span>
           <span class="feature-pill">5 capability axes</span>
           <span class="feature-pill">Bimanual 22-DoF dexterous hands</span>
           <span class="feature-pill">Graded predicate scoring</span>
@@ -137,7 +137,7 @@
         <h2 class="title is-2 section-title">Overview</h2>
         <img class="fig-img" src="./static/images/overview.png" alt="DexSimBench overview">
         <p class="fig-caption">
-          <b>DexSimBench overview.</b> The benchmark provides 107 declarative task specifications across five
+          <b>DexSimBench overview.</b> The benchmark provides 106 declarative task specifications across five
           capability axes, 8,110 success-validated teleoperated demonstrations on two bimanual embodiments equipped
           with dexterous hands, and graded predicate-based scoring under matched In-Domain and Out-of-Domain
           protocols. Five representative tasks, one per capability axis, are shown through frames of a real
@@ -182,7 +182,7 @@
         <div class="column is-one-third">
           <div class="axis-card axis-ld">
             <div class="axis-name">Limited-Demonstrations</div>
-            <div class="axis-count">27 tasks</div>
+            <div class="axis-count">26 tasks</div>
             <div class="axis-desc">
               Data-scarce skill acquisition: every task ships with only 30 demonstrations. Includes 11
               <i>articraft_open_*</i> tasks &mdash; microwaves, cash registers, rice cookers &mdash; requiring
@@ -214,10 +214,10 @@
         </div>
         <div class="column is-one-third" style="display:flex;align-items:center;">
           <div class="axis-card" style="border-left-color:#888;">
-            <div class="axis-name" style="color:#555;">107 tasks &middot; 5 axes</div>
+            <div class="axis-name" style="color:#555;">106 tasks &middot; 5 axes</div>
             <div class="axis-count">graded &middot; ID/OOD</div>
             <div class="axis-desc">
-              Across the 107 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances.
+              Across the 106 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances.
               Each ships with a baked <code>__ood</code> variant with identical seed and initial state, so every
               policy sees identical out-of-domain conditions.
             </div>
@@ -234,7 +234,7 @@
       <p class="section-subtitle">
         We benchmark seven recent VLA models under a unified protocol: 58-DoF joint control, the same all-category
         data mixture, 30k training steps on 8×H20 GPUs, and 3&nbsp;seeds × 10&nbsp;episodes per task per domain
-        (6,420 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
+        (6,360 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
       </p>
 
       <!-- Leaderboard animated gif icon ([Image #3]) -->
@@ -259,13 +259,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>LingBot-VLA-v2</td><td class="rescell">77.7 / 63.4</td><td class="rescell">51.8 / 30.4</td><td class="rescell">71.9 / 63.3</td><td class="rescell">69.4 / 41.6</td><td class="rescell">43.4 / 27.2</td><td class="rescell">67.4 / 51.8</td></tr>
-            <tr><td>π<sub>0.5</sub></td><td class="rescell">74.1 / 57.5</td><td class="rescell">50.7 / 31.4</td><td class="rescell">70.9 / 62.3</td><td class="rescell">67.7 / 42.0</td><td class="rescell">51.0 / 35.6</td><td class="rescell">66.1 / 50.3</td></tr>
-            <tr><td>GR00T-N1.7</td><td class="rescell">68.5 / 49.6</td><td class="rescell">48.2 / 21.0</td><td class="rescell">70.8 / 60.2</td><td class="rescell">61.6 / 32.6</td><td class="rescell">35.1 / 20.6</td><td class="rescell">61.5 / 42.7</td></tr>
-            <tr><td>InternVLA-A1.5</td><td class="rescell">5.6 / 0.1</td><td class="rescell">16.2 / 0.3</td><td class="rescell">9.1 / 4.5</td><td class="rescell">1.5 / 0.0</td><td class="rescell">0.5 / 0.0</td><td class="rescell">7.6 / 1.2</td></tr>
-            <tr><td>Galaxea G0.5</td><td class="rescell">37.0 / 19.5</td><td class="rescell">23.9 / 3.1</td><td class="rescell">41.3 / 28.0</td><td class="rescell">18.1 / 2.6</td><td class="rescell">17.2 / 4.6</td><td class="rescell">32.0 / 15.6</td></tr>
-            <tr><td>OpenDM-DM05</td><td class="rescell">55.6 / 35.4</td><td class="rescell">27.4 / 3.1</td><td class="rescell">47.2 / 33.2</td><td class="rescell">20.1 / 3.8</td><td class="rescell">27.5 / 15.0</td><td class="rescell">42.2 / 24.0</td></tr>
-            <tr><td>Xiaomi XR1</td><td class="rescell">22.7 / 5.6</td><td class="rescell">17.6 / 0.3</td><td class="rescell">16.5 / 4.4</td><td class="rescell">13.3 / 0.2</td><td class="rescell">7.0 / 0.0</td><td class="rescell">17.8 / 3.3</td></tr>
+            <tr><td>LingBot-VLA-v2</td><td class="rescell">77.7 / 63.4</td><td class="rescell">51.8 / 30.4</td><td class="rescell">74.6 / 65.8</td><td class="rescell">69.4 / 41.6</td><td class="rescell">43.4 / 27.2</td><td class="rescell">68.0 / 52.3</td></tr>
+            <tr><td>π<sub>0.5</sub></td><td class="rescell">74.1 / 57.5</td><td class="rescell">50.7 / 31.4</td><td class="rescell">73.6 / 64.7</td><td class="rescell">67.7 / 42.0</td><td class="rescell">51.0 / 35.6</td><td class="rescell">66.8 / 50.8</td></tr>
+            <tr><td>GR00T-N1.7</td><td class="rescell">68.5 / 49.6</td><td class="rescell">48.2 / 21.0</td><td class="rescell">73.5 / 62.5</td><td class="rescell">61.6 / 32.6</td><td class="rescell">35.1 / 20.6</td><td class="rescell">62.1 / 43.1</td></tr>
+            <tr><td>InternVLA-A1.5</td><td class="rescell">5.6 / 0.3</td><td class="rescell">15.5 / 0.0</td><td class="rescell">10.2 / 5.5</td><td class="rescell">1.7 / 0.0</td><td class="rescell">0.2 / 0.0</td><td class="rescell">7.7 / 1.5</td></tr>
+            <tr><td>Galaxea G0.5</td><td class="rescell">37.0 / 19.5</td><td class="rescell">23.9 / 3.1</td><td class="rescell">42.9 / 29.1</td><td class="rescell">18.1 / 2.6</td><td class="rescell">17.2 / 4.6</td><td class="rescell">32.3 / 15.8</td></tr>
+            <tr><td>OpenDM-DM05</td><td class="rescell">55.6 / 35.4</td><td class="rescell">27.4 / 3.1</td><td class="rescell">49.0 / 34.5</td><td class="rescell">20.1 / 3.8</td><td class="rescell">27.5 / 15.0</td><td class="rescell">42.6 / 24.2</td></tr>
+            <tr><td>Xiaomi XR1</td><td class="rescell">22.7 / 5.6</td><td class="rescell">17.6 / 0.3</td><td class="rescell">17.1 / 4.5</td><td class="rescell">13.3 / 0.2</td><td class="rescell">7.0 / 0.0</td><td class="rescell">18.0 / 3.3</td></tr>
           </tbody>
         </table>
       </div>
@@ -284,13 +284,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>LingBot-VLA-v2</td><td class="rescell">28.0 / 10.5</td><td class="rescell">34.3 / 6.5</td><td class="rescell">24.9 / 16.5</td><td class="rescell">22.0 / 4.6</td><td class="rescell">24.6 / 13.4</td><td class="rescell">27.5 / 11.0</td></tr>
-            <tr><td>π<sub>0.5</sub></td><td class="rescell">28.6 / 12.1</td><td class="rescell">32.8 / 7.8</td><td class="rescell">24.1 / 14.6</td><td class="rescell">19.4 / 4.0</td><td class="rescell">27.0 / 17.4</td><td class="rescell">27.2 / 11.7</td></tr>
-            <tr><td>GR00T-N1.7</td><td class="rescell">25.0 / 8.4</td><td class="rescell">41.4 / 10.4</td><td class="rescell">31.7 / 21.3</td><td class="rescell">32.4 / 10.0</td><td class="rescell">21.7 / 6.0</td><td class="rescell">30.1 / 12.0</td></tr>
-            <tr><td>InternVLA-A1.5</td><td class="rescell">4.2 / 0.1</td><td class="rescell">15.1 / 0.0</td><td class="rescell">6.9 / 4.4</td><td class="rescell">2.5 / 0.0</td><td class="rescell">0.0 / 0.0</td><td class="rescell">6.4 / 1.2</td></tr>
-            <tr><td>Galaxea G0.5</td><td class="rescell">8.4 / 1.1</td><td class="rescell">16.1 / 0.0</td><td class="rescell">7.9 / 2.8</td><td class="rescell">5.2 / 0.0</td><td class="rescell">2.6 / 0.0</td><td class="rescell">8.9 / 1.1</td></tr>
-            <tr><td>OpenDM-DM05</td><td class="rescell">21.8 / 6.6</td><td class="rescell">21.2 / 0.6</td><td class="rescell">15.2 / 6.7</td><td class="rescell">16.4 / 1.6</td><td class="rescell">14.9 / 7.2</td><td class="rescell">18.8 / 5.1</td></tr>
-            <tr><td>Xiaomi XR1</td><td class="rescell">8.1 / 0.2</td><td class="rescell">15.7 / 0.0</td><td class="rescell">4.2 / 0.6</td><td class="rescell">9.4 / 0.0</td><td class="rescell">6.6 / 0.0</td><td class="rescell">8.5 / 0.2</td></tr>
+            <tr><td>LingBot-VLA-v2</td><td class="rescell">28.0 / 10.5</td><td class="rescell">34.3 / 6.5</td><td class="rescell">25.8 / 17.2</td><td class="rescell">22.0 / 4.6</td><td class="rescell">24.6 / 13.4</td><td class="rescell">27.8 / 11.1</td></tr>
+            <tr><td>π<sub>0.5</sub></td><td class="rescell">28.6 / 12.1</td><td class="rescell">32.8 / 7.8</td><td class="rescell">25.0 / 15.2</td><td class="rescell">19.4 / 4.0</td><td class="rescell">27.0 / 17.4</td><td class="rescell">27.5 / 11.8</td></tr>
+            <tr><td>GR00T-N1.7</td><td class="rescell">25.0 / 8.4</td><td class="rescell">41.4 / 10.4</td><td class="rescell">32.9 / 22.1</td><td class="rescell">32.4 / 10.0</td><td class="rescell">21.7 / 6.0</td><td class="rescell">30.4 / 12.1</td></tr>
+            <tr><td>InternVLA-A1.5</td><td class="rescell">3.3 / 0.1</td><td class="rescell">14.9 / 0.0</td><td class="rescell">7.1 / 4.6</td><td class="rescell">2.3 / 0.0</td><td class="rescell">0.0 / 0.0</td><td class="rescell">6.0 / 1.2</td></tr>
+            <tr><td>Galaxea G0.5</td><td class="rescell">8.4 / 1.1</td><td class="rescell">16.1 / 0.0</td><td class="rescell">8.2 / 2.9</td><td class="rescell">5.2 / 0.0</td><td class="rescell">2.6 / 0.0</td><td class="rescell">9.0 / 1.2</td></tr>
+            <tr><td>OpenDM-DM05</td><td class="rescell">21.8 / 6.6</td><td class="rescell">21.2 / 0.6</td><td class="rescell">15.7 / 7.0</td><td class="rescell">16.4 / 1.6</td><td class="rescell">14.9 / 7.2</td><td class="rescell">19.0 / 5.2</td></tr>
+            <tr><td>Xiaomi XR1</td><td class="rescell">8.1 / 0.2</td><td class="rescell">15.7 / 0.0</td><td class="rescell">4.4 / 0.6</td><td class="rescell">9.4 / 0.0</td><td class="rescell">6.6 / 0.0</td><td class="rescell">8.6 / 0.2</td></tr>
           </tbody>
         </table>
       </div>
