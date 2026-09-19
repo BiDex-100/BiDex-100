@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="DexSimBench: A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks.">
+  <meta name="description" content="BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DexSimBench</title>
+  <title>BiDex-100</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -39,17 +41,25 @@
         <div class="container is-size-5">
           <div class="navbar-menu">
             <div class="navbar-end">
+              <a class="navbar-item pl-4 pr-4" href="#leaderboard">
+                <span class="icon" style="margin-right:5px;"><i class="fas fa-list-ol"></i></span>
+                <span>Leaderboard</span>
+              </a>
               <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
                 <span class="icon" style="margin-right:5px;"><i class="ai ai-arxiv"></i></span>
                 <span>arXiv</span>
               </a>
-              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
+              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench" target="_blank" rel="noopener">
                 <span class="icon" style="margin-right:5px;"><i class="fab fa-github"></i></span>
                 <span>Code</span>
               </a>
-              <a class="navbar-item pl-4 pr-4" href="https://github.com/dexsimbench/DexSimBench">
+              <a class="navbar-item pl-4 pr-4" href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Data" target="_blank" rel="noopener">
                 <span class="icon" style="margin-right:5px;"><i class="fas fa-database"></i></span>
                 <span>Dataset</span>
+              </a>
+              <a class="navbar-item pl-4 pr-4" href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Assets" target="_blank" rel="noopener">
+                <span class="icon" style="margin-right:5px;"><i class="fas fa-cubes"></i></span>
+                <span>Assets</span>
               </a>
             </div>
           </div>
@@ -60,9 +70,9 @@
     <!-- Body -->
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="title publication-title hero-title">DexSimBench</h1>
+        <h1 class="title publication-title hero-title">BiDex-100</h1>
         <h2 class="subtitle publication-title hero-subtitle">
-          A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks
+          A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks
         </h2>
         <!-- AUTHORS & AFFILIATIONS — temporarily hidden.
              To restore: delete the two comment-delimiter lines just above and just below this block.
@@ -79,17 +89,23 @@
         </p>
         -->
         <div class="btn-row">
-          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench" target="_blank" rel="noopener">
             <i class="ai ai-arxiv"></i> Paper
           </a>
-          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+          <a class="btn-dex" href="./static/pdf/BiDex_Supplementary_Material.pdf" target="_blank" rel="noopener">
+            <i class="fas fa-file-pdf"></i> Supplementary
+          </a>
+          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench" target="_blank" rel="noopener">
             <i class="fab fa-github"></i> Code
           </a>
-          <a class="btn-dex" href="https://github.com/dexsimbench/DexSimBench">
+          <a class="btn-dex" href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Data" target="_blank" rel="noopener">
             <i class="fas fa-database"></i> Dataset
           </a>
-          <a class="btn-dex" href="#experiments">
-            <i class="fas fa-table"></i> Results
+          <a class="btn-dex" href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Assets" target="_blank" rel="noopener">
+            <i class="fas fa-cubes"></i> Assets
+          </a>
+          <a class="btn-dex" href="#leaderboard">
+            <i class="fas fa-list-ol"></i> Leaderboard
           </a>
         </div>
       </div>
@@ -102,21 +118,18 @@
       <h2 class="title is-2 section-title">Abstract</h2>
       <div class="content">
         <p style="line-height:1.7;">
-          As vision-language-action (VLA) models scale to larger demonstration corpora, narrow pick-and-place
-          benchmarks are becoming less informative. Progress now depends on whether models can handle capability
-          limits such as <b>memory</b>, <b>long-horizon control</b>, <b>changing instructions</b>, <b>few-shot
-          learning</b>, and <b>visual shifts</b>. These limits are especially important for bimanual dexterous
-          manipulation, where two multi-fingered hands must coordinate contact-rich actions beyond the scope of
-          parallel-jaw settings. We present <b>DexSimBench</b>, a simulation benchmark for measuring these
-          capabilities in bimanual dexterous manipulation. It includes <b>106 tasks</b> across five axes:
-          Generalization, Instruction-Following, Limited Demonstrations, Long Horizon, and Memory. Tasks are defined
-          through compositional goals built from typed predicates, enabling <b>graded evaluation</b> that identifies
-          partial progress and specific failure modes. Each task also has an out-of-domain variant with controlled
-          visual and spatial changes, allowing direct measurement of robustness. DexSimBench supports two 22-DoF
-          hand embodiments and provides <b>8,110 success-validated teleoperated demonstrations</b>, totaling 6.25M
-          frames and 69.5 hours. We evaluate seven recent vision-language-action models under a unified protocol,
-          establishing baselines for capability-specific performance, robustness, and data efficiency. Code, tasks,
-          data, and evaluation tools are publicly available.
+          Bimanual manipulation with dexterous hands has attracted growing attention in research on robotic action
+          models. However, few studies have developed benchmarks specifically tailored for dexterous manipulation,
+          leaving it unclear <i>how</i> the dexterous-manipulation capability of existing models actually bears out.
+          We present <b>BiDex-100</b>, a simulation benchmark for bimanual dexterous manipulation that combines broad
+          task coverage, multi-dimensional evaluation, and high-DoF hand embodiments. Concretely, the benchmark
+          comprises <b>106 tasks</b> organized along five capability axes: <b>Generalization</b>, <b>Instruction
+          Following</b>, <b>Limited Demonstrations</b>, <b>Long Horizon</b>, and <b>Memory</b>. Each task is paired
+          with an out-of-domain variant featuring controlled visual and spatial changes, allowing systematic
+          assessment of robustness. In addition, the benchmark supports two embodiments and provides
+          <b>8,080 success-validated teleoperated demonstrations</b>, totaling 6.25M frames. We evaluate seven recent
+          Vision-Language-Action models under a unified protocol, establishing baselines for capability-specific
+          performance, robustness, and data efficiency. Code, tasks, data, and evaluation tools will be made public.
         </p>
         <div style="text-align:center;">
           <span class="feature-pill">106 tasks</span>
@@ -124,7 +137,7 @@
           <span class="feature-pill">Bimanual 22-DoF dexterous hands</span>
           <span class="feature-pill">Graded predicate scoring</span>
           <span class="feature-pill">Matched ID / OOD</span>
-          <span class="feature-pill">8,110 teleop demos</span>
+          <span class="feature-pill">8,080 teleop demos · 6.25M frames</span>
         </div>
       </div>
     </div>
@@ -135,14 +148,14 @@
     <div class="container narrow">
       <div class="has-text-centered">
         <h2 class="title is-2 section-title">Overview</h2>
-        <img class="fig-img" src="./static/images/overview.png" alt="DexSimBench overview">
+        <img class="fig-img" src="./static/images/overview.png" alt="BiDex-100 overview">
         <p class="fig-caption">
-          <b>DexSimBench overview.</b> The benchmark provides 106 declarative task specifications across five
-          capability axes, 8,110 success-validated teleoperated demonstrations on two bimanual embodiments equipped
-          with dexterous hands, and graded predicate-based scoring under matched In-Domain and Out-of-Domain
-          protocols. Five representative tasks, one per capability axis, are shown through frames of a real
-          demonstration with its language instruction: Memory, Long-Horizon, Instruction-Following,
-          Limited-Demonstrations, and Generalization.
+          <b>Overview of BiDex-100.</b> The benchmark provides 106 declarative task specifications across five
+          capability axes, 8,080 success-validated teleoperated demonstrations on two bimanual embodiments equipped
+          with dexterous hands, and progress-based scoring under matched In-Domain and Out-of-Domain protocols. Five
+          representative tasks, one per capability axis &mdash; Memory, Long-Horizon, Instruction-Following,
+          Limited-Demonstrations, and Generalization &mdash; each shown with a real demonstration and its language
+          instruction.
         </p>
       </div>
     </div>
@@ -227,82 +240,82 @@
     </div>
   </section>
 
-  <!-- ===================== EXPERIMENTS ===================== -->
-  <section class="section" id="experiments" style="padding-top:1rem;">
-    <div class="container">
-      <h2 class="title is-2 section-title">Experiments</h2>
-      <p class="section-subtitle">
-        We benchmark seven recent VLA models under a unified protocol: 58-DoF joint control, the same all-category
-        data mixture, 30k training steps on 8×H20 GPUs, and 3&nbsp;seeds × 10&nbsp;episodes per task per domain
-        (6,360 rollouts per model). Graded scores reward partial progress; success requires a perfect 100.
-      </p>
-
-      <!-- Leaderboard animated gif icon ([Image #3]) -->
-      <div class="leaderboard-wrap">
-        <img src="./static/images/leaderboard.gif" alt="Animated leaderboard of overall VLA performance">
-      </div>
-      <p class="fig-caption" style="text-align:center;">
-        Animated leaderboard replaying overall graded scores across the evaluated VLA models and five capability axes.
-      </p>
-
-      <!-- ID results -->
-      <h3 class="title is-4 section-title" style="margin-top:2rem;">Main Results &mdash; In-Domain (ID)</h3>
-      <p class="results-legend">
-        graded score / success rate (%) per capability axis. <b class="best">Bold</b> = best in column.
-      </p>
-      <div class="table-wrap">
-        <table class="dex-table results-table">
-          <thead>
-            <tr>
-              <th>Model</th><th>Generalization</th><th>Instruct.-Foll.</th>
-              <th>Limited-Demo.</th><th>Long-Horizon</th><th>Memory</th><th>Overall</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>LingBot-VLA-v2</td><td class="rescell">77.7 / 63.4</td><td class="rescell">51.8 / 30.4</td><td class="rescell">74.6 / 65.8</td><td class="rescell">69.4 / 41.6</td><td class="rescell">43.4 / 27.2</td><td class="rescell">68.0 / 52.3</td></tr>
-            <tr><td>π<sub>0.5</sub></td><td class="rescell">74.1 / 57.5</td><td class="rescell">50.7 / 31.4</td><td class="rescell">73.6 / 64.7</td><td class="rescell">67.7 / 42.0</td><td class="rescell">51.0 / 35.6</td><td class="rescell">66.8 / 50.8</td></tr>
-            <tr><td>GR00T-N1.7</td><td class="rescell">68.5 / 49.6</td><td class="rescell">48.2 / 21.0</td><td class="rescell">73.5 / 62.5</td><td class="rescell">61.6 / 32.6</td><td class="rescell">35.1 / 20.6</td><td class="rescell">62.1 / 43.1</td></tr>
-            <tr><td>InternVLA-A1.5</td><td class="rescell">5.6 / 0.3</td><td class="rescell">15.5 / 0.0</td><td class="rescell">10.2 / 5.5</td><td class="rescell">1.7 / 0.0</td><td class="rescell">0.2 / 0.0</td><td class="rescell">7.7 / 1.5</td></tr>
-            <tr><td>Galaxea G0.5</td><td class="rescell">37.0 / 19.5</td><td class="rescell">23.9 / 3.1</td><td class="rescell">42.9 / 29.1</td><td class="rescell">18.1 / 2.6</td><td class="rescell">17.2 / 4.6</td><td class="rescell">32.3 / 15.8</td></tr>
-            <tr><td>OpenDM-DM05</td><td class="rescell">55.6 / 35.4</td><td class="rescell">27.4 / 3.1</td><td class="rescell">49.0 / 34.5</td><td class="rescell">20.1 / 3.8</td><td class="rescell">27.5 / 15.0</td><td class="rescell">42.6 / 24.2</td></tr>
-            <tr><td>Xiaomi XR1</td><td class="rescell">22.7 / 5.6</td><td class="rescell">17.6 / 0.3</td><td class="rescell">17.1 / 4.5</td><td class="rescell">13.3 / 0.2</td><td class="rescell">7.0 / 0.0</td><td class="rescell">18.0 / 3.3</td></tr>
-          </tbody>
-        </table>
+  <!-- ===================== LEADERBOARD ===================== -->
+  <section class="section lb-section" id="leaderboard" style="padding-top:1rem;">
+    <div class="container lb-container">
+      <div class="lb-head">
+        <p class="lb-kicker">Leaderboard</p>
+        <h2 class="title is-2 section-title">VLA Leaderboard</h2>
+        <p class="section-subtitle">
+          Seven recent Vision-Language-Action models fine-tuned under one protocol &mdash; 58-DoF joint control, the
+          same all-category data mixture, and each model's <i>official</i> training configuration &mdash; then
+          evaluated on all 106 tasks under both domains: 2&nbsp;seeds &times; 25&nbsp;episodes per task per domain
+          (50 rollouts/task/domain, 10,600 rollouts per model). <b>Progress score</b> rewards partial completion in
+          [0,100]; <b>success rate</b> requires a perfect 100. Toggle the metric and domain above, and click any
+          column to re-rank.
+        </p>
       </div>
 
-      <!-- OOD results -->
-      <h3 class="title is-4 section-title" style="margin-top:2rem;">Main Results &mdash; Out-of-Domain (OOD)</h3>
+      <div class="lb-card">
+        <!-- Toolbar: metric + domain chips -->
+        <div class="lb-toolbar">
+          <div class="lb-toolbar-group">
+            <span class="lb-sort-label">Metric</span>
+            <div class="lb-chips" role="group" aria-label="Metric">
+              <button class="lb-chip is-active" data-lb-toggle="metric" data-lb-value="score" type="button">Progress Score</button>
+              <button class="lb-chip" data-lb-toggle="metric" data-lb-value="success" type="button">Success Rate</button>
+            </div>
+          </div>
+          <div class="lb-toolbar-group">
+            <span class="lb-sort-label">Domain</span>
+            <div class="lb-chips" role="group" aria-label="Domain">
+              <button class="lb-chip is-active" data-lb-toggle="domain" data-lb-value="id" type="button">In-Domain</button>
+              <button class="lb-chip" data-lb-toggle="domain" data-lb-value="ood" type="button">Out-of-Domain</button>
+            </div>
+          </div>
+          <span class="lb-stamp">2 seeds &times; 25 eps &middot; 106 tasks &middot; 10,600 rollouts/model</span>
+        </div>
+
+        <!-- Table populated by static/js/index.js -->
+        <div class="leaderboard-table-wrap">
+          <table class="leaderboard-table">
+            <thead><tr id="lb-head-row"></tr></thead>
+            <tbody id="lb-body"></tbody>
+          </table>
+        </div>
+
+        <p class="lb-footnote">
+          Ranked by the selected metric on the Overall column by default; click any header to re-rank by that axis.
+          Best value per column is shown in <span class="lb-accent">blue</span>.
+        </p>
+      </div>
+
+      <!-- VLA model details -->
+      <h3 class="title is-4 section-title lb-subtitle">Evaluated VLA Baselines</h3>
       <p class="results-legend">
-        graded score / success rate (%) per capability axis. <b class="best">Bold</b> = best in column.
+        All models share 58-DoF joint control and the all-category data mixture; &ldquo;Train&rdquo; = fine-tuning
+        optimizer steps, kept at each model's official configuration.
       </p>
-      <div class="table-wrap">
-        <table class="dex-table results-table">
+      <div class="lb-models-wrap">
+        <table class="lb-models-table">
           <thead>
             <tr>
-              <th>Model</th><th>Generalization</th><th>Instruct.-Foll.</th>
-              <th>Limited-Demo.</th><th>Long-Horizon</th><th>Memory</th><th>Overall</th>
+              <th>Model</th><th>VLM Backbone</th><th>Action Expert</th>
+              <th>Chunk</th><th>Train</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td>LingBot-VLA-v2</td><td class="rescell">28.0 / 10.5</td><td class="rescell">34.3 / 6.5</td><td class="rescell">25.8 / 17.2</td><td class="rescell">22.0 / 4.6</td><td class="rescell">24.6 / 13.4</td><td class="rescell">27.8 / 11.1</td></tr>
-            <tr><td>π<sub>0.5</sub></td><td class="rescell">28.6 / 12.1</td><td class="rescell">32.8 / 7.8</td><td class="rescell">25.0 / 15.2</td><td class="rescell">19.4 / 4.0</td><td class="rescell">27.0 / 17.4</td><td class="rescell">27.5 / 11.8</td></tr>
-            <tr><td>GR00T-N1.7</td><td class="rescell">25.0 / 8.4</td><td class="rescell">41.4 / 10.4</td><td class="rescell">32.9 / 22.1</td><td class="rescell">32.4 / 10.0</td><td class="rescell">21.7 / 6.0</td><td class="rescell">30.4 / 12.1</td></tr>
-            <tr><td>InternVLA-A1.5</td><td class="rescell">3.3 / 0.1</td><td class="rescell">14.9 / 0.0</td><td class="rescell">7.1 / 4.6</td><td class="rescell">2.3 / 0.0</td><td class="rescell">0.0 / 0.0</td><td class="rescell">6.0 / 1.2</td></tr>
-            <tr><td>Galaxea G0.5</td><td class="rescell">8.4 / 1.1</td><td class="rescell">16.1 / 0.0</td><td class="rescell">8.2 / 2.9</td><td class="rescell">5.2 / 0.0</td><td class="rescell">2.6 / 0.0</td><td class="rescell">9.0 / 1.2</td></tr>
-            <tr><td>OpenDM-DM05</td><td class="rescell">21.8 / 6.6</td><td class="rescell">21.2 / 0.6</td><td class="rescell">15.7 / 7.0</td><td class="rescell">16.4 / 1.6</td><td class="rescell">14.9 / 7.2</td><td class="rescell">19.0 / 5.2</td></tr>
-            <tr><td>Xiaomi XR1</td><td class="rescell">8.1 / 0.2</td><td class="rescell">15.7 / 0.0</td><td class="rescell">4.4 / 0.6</td><td class="rescell">9.4 / 0.0</td><td class="rescell">6.6 / 0.0</td><td class="rescell">8.6 / 0.2</td></tr>
-          </tbody>
+          <tbody id="lb-models-body"></tbody>
         </table>
       </div>
 
       <p class="fig-caption" style="max-width:1020px;">
         Beyond the headline numbers, the benchmark supports three analyses that binary, single-axis benchmarks
         cannot: <b>capability profiles</b> (whether a model's strength comes from short-horizon skills or extends to
-        memory- and horizon-bound tasks), <b>ID→OOD degradation</b> (localizing robustness failures to texture/lighting
-        shift, layout offset, distractor interference, or mirroring), and <b>data efficiency</b> (the
-        Limited-Demonstrations axis isolates the 30-demo regime). Graded subtask scores further distinguish
-        &ldquo;near miss&rdquo; from complete failure on long-horizon tasks, where strict success rates are expected
-        to floor near zero for all current models.
+        memory- and horizon-bound tasks), <b>ID&rarr;OOD degradation</b> (the per-axis gap under combined shifts &mdash;
+        appearance, layout, distractor, scale, and mirroring), and <b>data efficiency</b> (the
+        Limited-Demonstrations axis isolates the 30-demo regime). Progress subtask scores further distinguish
+        &ldquo;near miss&rdquo; from complete failure on long-horizon tasks, where strict success rates floor near
+        zero for every current model.
       </p>
     </div>
   </section>
@@ -311,10 +324,10 @@
   <section class="section" style="padding-top:1rem;">
     <div class="container narrow">
       <h2 class="title is-2 section-title">Citation</h2>
-      <div class="citation">@misc{dexsimbench2025,
-  title         = {DexSimBench: A Simulation Benchmark for 100+ Bimanual Dexterous Manipulation Tasks},
+      <div class="citation">@misc{bidex100,
+  title         = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks},
   <!-- AUTHOR NAMES — temporarily hidden. To restore, delete the two comment-delimiter lines around the author line below.
-  author        = {Yong Wang and Kecheng Zheng and Hua Chen and Chao Xu and Yujun Shen and Shengze Cai},
+  author        = {Yong Wang and Kecheng Zheng and Chao Xu and Yujun Shen and Shengze Cai},
   -->
   year          = {2025},
   howpublished  = {https://github.com/dexsimbench/DexSimBench},
@@ -327,41 +340,26 @@
     <div class="container">
       <div class="content has-text-centered">
         <p>
+          Code, tasks, and evaluation tooling are released at
+          <a href="https://github.com/dexsimbench/DexSimBench">github.com/dexsimbench/DexSimBench</a>.
+          &nbsp;&middot;&nbsp;
+          Teleoperation data:
+          <a href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Data">BiDex-100-Data</a>
+          &nbsp;&middot;&nbsp;
+          Object assets:
+          <a href="https://huggingface.co/datasets/BiDex-100/BiDex-100-Assets">BiDex-100-Assets</a>.
+        </p>
+        <p style="font-size:0.85rem;color:var(--muted);">
           Project page template adapted from
           <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a> and the WVLA project page.
-          &nbsp;&middot;&nbsp;
-          Code, tasks, data, and evaluation tooling are released at
-          <a href="https://github.com/dexsimbench/DexSimBench">github.com/dexsimbench/DexSimBench</a>.
         </p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Bold the best graded-score and best success-rate per column in each results table.
-    (function () {
-      document.querySelectorAll("table.results-table").forEach(function (tbl) {
-        var rows = Array.prototype.slice.call(tbl.querySelectorAll("tbody tr"));
-        if (!rows.length) return;
-        var ncols = rows[0].children.length;
-        for (var c = 1; c < ncols; c++) {
-          var bestS = -Infinity, bestR = -Infinity;
-          rows.forEach(function (r) {
-            var parts = r.children[c].textContent.split("/").map(function (x) { return parseFloat(x.trim()); });
-            if (!isNaN(parts[0]) && parts[0] > bestS) bestS = parts[0];
-            if (!isNaN(parts[1]) && parts[1] > bestR) bestR = parts[1];
-          });
-          rows.forEach(function (r) {
-            var cell = r.children[c];
-            var parts = cell.textContent.split("/").map(function (x) { return x.trim(); });
-            var sB = parseFloat(parts[0]) === bestS && bestS > 0;
-            var rB = parseFloat(parts[1]) === bestR && bestR > 0;
-            cell.innerHTML = (sB ? '<b class="best">' : '') + parts[0] + '</b>' + " / " +
-                             (rB ? '<b class="best">' : '') + parts[1] + '</b>';
-          });
-        }
-      });
-    })();
+    // Legacy bold-markup script removed: the leaderboard table is now rendered and
+    // highlighted by static/js/index.js. Keep an empty block to preserve page shape.
   </script>
 
 </body>
