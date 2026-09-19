@@ -237,7 +237,8 @@
           <div class="lb-toolbar-group">
             <span class="lb-sort-label">Domain</span>
             <div class="lb-chips" role="group" aria-label="Domain">
-              <button class="lb-chip is-active" data-lb-toggle="domain" data-lb-value="id" type="button">In-Domain</button>
+              <button class="lb-chip is-active" data-lb-toggle="domain" data-lb-value="all" type="button">All</button>
+              <button class="lb-chip" data-lb-toggle="domain" data-lb-value="id" type="button">In-Domain</button>
               <button class="lb-chip" data-lb-toggle="domain" data-lb-value="ood" type="button">Out-of-Domain</button>
             </div>
           </div>
@@ -254,26 +255,9 @@
 
         <p class="lb-footnote">
           Ranked by the selected metric on the Overall column by default; click any header to re-rank by that axis.
+          <b>All</b> shows the per-axis mean of In-Domain and Out-of-Domain (including Overall).
           Best value per column is shown in <span class="lb-accent">blue</span>.
         </p>
-      </div>
-
-      <!-- VLA model details -->
-      <h3 class="title is-4 section-title lb-subtitle">Evaluated VLA Baselines</h3>
-      <p class="results-legend">
-        All models share 58-DoF joint control and the all-category data mixture; &ldquo;Train&rdquo; = fine-tuning
-        optimizer steps, kept at each model's official configuration.
-      </p>
-      <div class="lb-models-wrap">
-        <table class="lb-models-table">
-          <thead>
-            <tr>
-              <th>Model</th><th>VLM Backbone</th><th>Action Expert</th>
-              <th>Chunk</th><th>Train</th>
-            </tr>
-          </thead>
-          <tbody id="lb-models-body"></tbody>
-        </table>
       </div>
 
       <p class="fig-caption" style="max-width:1020px;">

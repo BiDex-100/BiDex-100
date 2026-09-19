@@ -5,8 +5,8 @@ window.HELP_IMPROVE_VIDEOJS = false;
  * VLA leaderboard — interactive RoboDojo-style table.
  * No GIF: a sortable, ranked HTML table driven by the data
  * below. Toggle the metric (progress score / success rate) and
- * the domain (In-Domain / Out-of-Domain); click a column header
- * to re-rank by that axis.
+ * the domain (All = mean of In-Domain & Out-of-Domain, In-Domain,
+ * Out-of-Domain); click a column header to re-rank by that axis.
  * ============================================================ */
 
 // Axis columns, in display order. `ov` (Overall) is the headline metric.
@@ -44,21 +44,10 @@ var LB_MODELS = [
     ood: { gen: [8.1, 0.2],   if: [15.7, 0.0],  ld: [4.4, 0.6],   lh: [9.4, 0.0],   mem: [6.6, 0.0],   ov: [8.6, 0.2] } }
 ];
 
-// Static details for the VLA baselines table.
-var LB_MODEL_DETAILS = [
-  { html: 'π<sub>0.5</sub>',    bb: 'PaliGemma-2B', exp: '300M flow-matching', chunk: 50,  train: '60k' },
-  { html: 'GR00T-N1.7',        bb: 'Cosmos-R2-2B',  exp: 'DiT flow-matching',  chunk: 16,  train: '400k' },
-  { html: 'InternVLA-A1.5',    bb: 'Qwen3.5-2B',    exp: '1B flow-matching',   chunk: 50,  train: '120k' },
-  { html: 'Galaxea G0.5',       bb: 'Qwen3.5-2B',    exp: 'flow-matching',     chunk: 32,  train: '120k' },
-  { html: 'OpenDM-DM05',        bb: 'Gemma3-4B',     exp: 'rectified flow',    chunk: 50,  train: '120k' },
-  { html: 'LingBot-VLA-v2',     bb: 'Qwen3-VL-4B',   exp: 'MoE flow (L1)',     chunk: 50,  train: '60k' },
-  { html: 'Xiaomi XR1',         bb: 'Qwen3-VL-4B',   exp: '60-D DiT flow',    chunk: 30,  train: '120k' }
-];
-
 // Live leaderboard state.
 var LB = {
   metric: 'score', // 'score' | 'success'
-  domain: 'id',    // 'id' | 'ood'
+  domain: 'all',   // 'all' (mean of ID & OOD) | 'id' | 'ood'
   sortKey: 'ov',   // axis key to rank by
   sortDir: 'desc'  // 'desc' | 'asc'
 };
@@ -66,7 +55,12 @@ var LB = {
 function lbMetricIdx() { return LB.metric === 'success' ? 1 : 0; }
 
 function lbVal(model, axisKey) {
-  return model[LB.domain][axisKey][lbMetricIdx()];
+  var mi = lbMetricIdx();
+  if (LB.domain === 'all') {
+    // "All" = per-axis mean of In-Domain and Out-of-Domain (incl. Overall).
+    return (model.id[axisKey][mi] + model.ood[axisKey][mi]) / 2;
+  }
+  return model[LB.domain][axisKey][mi];
 }
 
 function lbFmt(v) { return v.toFixed(1); }
@@ -134,20 +128,6 @@ function lbRender() {
   lbRenderBody();
 }
 
-function lbRenderModels() {
-  var tb = document.getElementById('lb-models-body');
-  if (!tb) return;
-  tb.innerHTML = LB_MODEL_DETAILS.map(function (m) {
-    return '<tr class="lb-models-row">' +
-      '<td class="lb-models-name">' + m.html + '</td>' +
-      '<td>' + m.bb + '</td>' +
-      '<td>' + m.exp + '</td>' +
-      '<td class="lb-num">' + m.chunk + '</td>' +
-      '<td class="lb-num">' + m.train + '</td>' +
-      '</tr>';
-  }).join('');
-}
-
 function lbInit() {
   if (!document.getElementById('lb-head-row')) return;
 
@@ -198,8 +178,7 @@ function lbInit() {
 // viewer networks, and a missing `$` would throw in $(document).ready and
 // silently prevent the leaderboard + models tables from rendering.
 function lbBootstrap() {
-  // Interactive leaderboard + VLA baselines table (vanilla, no jQuery).
-  lbRenderModels();
+  // Interactive leaderboard (vanilla, no jQuery).
   lbInit();
 
   // jQuery-dependent niceties (navbar burger, carousels) only if jQuery loaded.

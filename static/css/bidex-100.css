@@ -171,7 +171,6 @@ body {
   font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
   color: var(--accent);
 }
-.lb-subtitle { margin-top: 2.4rem; }
 
 .lb-card {
   max-width: 1120px; margin: 1.2rem auto 0;
@@ -269,49 +268,6 @@ body {
   border-top: 1px solid var(--line-soft); background: var(--surface);
 }
 .lb-accent { color: var(--accent); font-weight: 700; }
-
-/* VLA baselines details table */
-.lb-models-wrap {
-  overflow-x: auto; margin: 0 auto 1.2rem; max-width: 980px;
-  border: 1px solid var(--line-soft); border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 12px 32px -24px rgba(32,34,36,.4);
-}
-.lb-models-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-.lb-models-table th,
-.lb-models-table td {
-  padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--line-soft);
-}
-.lb-models-table thead th {
-  background: #f4f6f8; color: var(--muted);
-  font-family: var(--mono-font); font-size: 11px; font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase;
-}
-.lb-models-table thead th:nth-child(4),
-.lb-models-table thead th:nth-child(5),
-.lb-models-table td.lb-num { text-align: center; }
-.lb-models-table tbody tr:last-child td { border-bottom: 0; }
-.lb-models-table tbody tr:hover td { background: rgba(66,133,244,.05); }
-.lb-models-name { font-family: var(--brand-font); font-weight: 600; color: var(--ink); white-space: nowrap; }
-.lb-num { font-family: var(--mono-font); font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-/* legacy results helpers still referenced by the baselines legend */
-.results-legend { font-size: .85rem; color: var(--ink-soft); text-align: center; max-width: 880px; margin: 0 auto .8rem; }
-
-/* generic legacy table styling retained for any remaining .dex-table usage */
-.table-wrap {
-  overflow-x: auto; margin: 0 auto 1.2rem;
-  border: 1px solid var(--line-soft); border-radius: var(--radius-sm);
-  max-width: 1100px; background: var(--surface);
-}
-table.dex-table { width: 100%; border-collapse: collapse; font-size: .85rem; white-space: nowrap; }
-table.dex-table th, table.dex-table td { padding: 6px 10px; text-align: center; border-bottom: 1px solid var(--line-soft); }
-table.dex-table thead th { background: var(--ink); color: #fff; font-weight: 600; }
-table.dex-table tbody td:first-child { text-align: left; font-weight: 600; white-space: nowrap; }
-table.dex-table tbody tr:nth-child(even) { background: var(--surface-2); }
-table.dex-table .rescell { font-variant-numeric: tabular-nums; }
-table.dex-table b.best { color: var(--accent); font-weight: 800; }
-.results-legend b.best { color: var(--accent); }
 
 /* ---------- Figures ---------- */
 .fig-img {
