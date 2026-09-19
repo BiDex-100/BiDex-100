@@ -193,26 +193,33 @@ function lbInit() {
   lbRender();
 }
 
-$(document).ready(function () {
-  // Navbar burger toggle (mobile menu)
+// Boot the leaderboard. We deliberately do NOT depend on jQuery here:
+// jQuery is loaded from the Google CDN, which is frequently blocked on
+// viewer networks, and a missing `$` would throw in $(document).ready and
+// silently prevent the leaderboard + models tables from rendering.
+function lbBootstrap() {
+  // Interactive leaderboard + VLA baselines table (vanilla, no jQuery).
+  lbRenderModels();
+  lbInit();
+
+  // jQuery-dependent niceties (navbar burger, carousels) only if jQuery loaded.
+  if (!window.$) return;
   $(".navbar-burger").click(function () {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
   });
-
-  // Carousel init (used by any .carousel block)
-  var options = {
-    slidesToScroll: 1,
-    slidesToShow: 2,
-    loop: true,
-    infinite: true,
-    autoplay: false,
-    autoplaySpeed: 3000
-  };
-  if (window.bulmaCarousel) { bulmaCarousel.attach(".carousel", options); }
+  if (window.bulmaCarousel) {
+    bulmaCarousel.attach(".carousel", {
+      slidesToScroll: 1, slidesToShow: 2, loop: true, infinite: true,
+      autoplay: false, autoplaySpeed: 3000
+    });
+  }
   if (window.bulmaSlider) { bulmaSlider.attach(); }
+}
 
-  // Interactive leaderboard
-  lbRenderModels();
-  lbInit();
-});
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', lbBootstrap, { once: true });
+} else {
+  // DOM already parsed (script ran late / cached) — boot immediately.
+  lbBootstrap();
+}
