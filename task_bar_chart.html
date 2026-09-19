@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="BiDex-100 per-task performance bar chart: 7 VLA models across 106 tasks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Per-Task Bar Chart · BiDex-100</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bidex-100.css">
+  <link rel="stylesheet" href="./static/css/lb_chart.css">
+</head>
+
+<body>
+
+  <div class="lbch-nav">
+    <a class="lbch-nav-brand" href="./index.html#leaderboard"><b>BiDex-100</b></a>
+    <a class="lbch-back" href="./index.html#leaderboard">
+      <span>&larr;</span> Back to leaderboard
+    </a>
+  </div>
+
+  <main class="lbch-page" id="lbch-root"><!-- rendered by static/js/lb_chart.js --></main>
+
+  <div class="lbch-tip" id="lbch-tip"></div>
+
+  <footer class="footer" style="background: transparent;">
+    <div class="container has-text-centered">
+      <p style="font-size:.85rem;color:var(--muted);">
+        Per-task scores from <code>leaderboard_eval_report.json</code> · 2 seeds × 25 episodes per task per domain.
+        &ldquo;All&rdquo; = mean of In-Domain and Out-of-Domain.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./static/js/lb_chart_data.js"></script>
+  <script src="./static/js/lb_chart.js"></script>
+
+</body>
+</html>

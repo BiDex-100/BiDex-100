@@ -208,6 +208,8 @@ body {
 }
 .lb-chip:hover { color: var(--ink); }
 .lb-chip.is-active { background: var(--accent-soft); color: var(--accent); }
+a.lb-chart-link { text-decoration: none; background: var(--accent-soft); color: var(--accent); }
+a.lb-chart-link:hover { background: var(--accent); color: #fff; }
 .lb-stamp {
   margin-left: auto; font-family: var(--mono-font); font-size: 11px;
   color: var(--muted); letter-spacing: .02em; white-space: nowrap;

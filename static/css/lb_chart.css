@@ -1,0 +1,112 @@
+/* Per-task bar chart page. Reuses design tokens from static/css/bidex-100.css. */
+
+.lbch-page { max-width: 1240px; margin: 0 auto; padding: 0 16px 60px; }
+
+/* ---------- Top bar ---------- */
+.lbch-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; max-width: 1240px; margin: 0 auto; padding: 18px 16px 6px;
+}
+.lbch-nav-brand { font-family: var(--brand-font); font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+.lbch-nav-brand b { color: var(--accent); }
+.lbch-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--brand-font); font-weight: 600; font-size: 13px;
+  color: var(--ink-soft); border: 1px solid var(--line-soft);
+  background: var(--surface); border-radius: 999px; padding: 7px 14px;
+  text-decoration: none; transition: color .15s, border-color .15s, background .15s;
+}
+.lbch-back:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, var(--line-soft)); background: var(--accent-soft); }
+
+/* ---------- Header block ---------- */
+.lbch-top { max-width: 1200px; margin: 0 auto 1rem; }
+.lbch-head { text-align: center; margin: 0 auto 1rem; max-width: 860px; }
+.lbch-title {
+  font-family: var(--brand-font); font-weight: 700;
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem); color: var(--ink);
+  margin: .35rem 0 .35rem; letter-spacing: -.02em;
+}
+.lbch-sub { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; max-width: 780px; margin: 0 auto; }
+
+/* controls: reuse .lb-toolbar/.lb-chips from bidex-100.css, made into a card */
+.lbch-controls {
+  border-radius: var(--radius); margin: 0 auto .9rem; max-width: 1200px;
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 12px 32px -24px rgba(32, 34, 36, .42);
+}
+.lbch-controls .lb-stamp { margin-left: auto; }
+
+/* ---------- Legend ---------- */
+.lbch-legend {
+  list-style: none; margin: 0 auto; padding: 6px 10px;
+  display: flex; flex-wrap: wrap; gap: 7px 10px; justify-content: center;
+  max-width: 1200px;
+}
+.lbch-legend-item {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px; border: 1px solid var(--line-soft);
+  border-radius: 999px; background: var(--surface); cursor: default;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.lbch-legend-item:hover { transform: translateY(-1px); box-shadow: 0 6px 14px -10px rgba(32, 34, 36, .55); }
+.lbch-swatch { width: 12px; height: 12px; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .06); }
+.lbch-legend-name { font-family: var(--brand-font); font-weight: 600; font-size: 13px; color: var(--ink); white-space: nowrap; }
+
+/* ---------- Faceted panels ---------- */
+.lbch-grid { max-width: 1200px; margin: 0 auto; }
+.lbch-card {
+  background: var(--surface); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 12px 32px -24px rgba(32, 34, 36, .45);
+  margin: 0 auto 18px;
+}
+.lbch-card-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px; border-bottom: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, var(--surface), #fafbfc);
+  border-left: 4px solid var(--bc, var(--accent));
+}
+.lbch-dot { width: 11px; height: 11px; border-radius: 3px; }
+.lbch-card-title { font-family: var(--brand-font); font-weight: 700; font-size: 1.05rem; color: var(--ink); letter-spacing: -.01em; margin: 0; }
+.lbch-card-count {
+  margin-left: auto; font-family: var(--mono-font); font-size: 11px;
+  color: var(--muted); padding: 3px 10px; background: var(--surface-2); border-radius: 999px;
+}
+.lbch-svghost { overflow-x: auto; padding: 6px 10px 4px; }
+.lbch-svg { display: block; }
+
+/* ---------- SVG internals ---------- */
+.lbch-bg { fill: transparent; }
+.lbch-grid { stroke: var(--line-soft); stroke-width: 1; shape-rendering: crispEdges; }
+.lbch-baseline { stroke: rgba(32, 34, 36, .32); stroke-width: 1; shape-rendering: crispEdges; }
+.lbch-ax-y { font-family: var(--mono-font); font-size: 10px; fill: var(--muted); }
+.lbch-ax-x { font-family: var(--brand-font); font-size: 9.5px; fill: var(--ink-soft); }
+.lbch-ax-title {
+  font-family: var(--mono-font); font-size: 10.5px; fill: var(--muted);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.lbch-bar { transition: opacity .18s ease, filter .18s ease; cursor: pointer; }
+.lbch-bar:hover { filter: brightness(1.1); }
+
+/* isolate a model when its legend item is hovered */
+.lbch-focus-mi-0 .lbch-bar:not(.lbch-mi-0),
+.lbch-focus-mi-1 .lbch-bar:not(.lbch-mi-1),
+.lbch-focus-mi-2 .lbch-bar:not(.lbch-mi-2),
+.lbch-focus-mi-3 .lbch-bar:not(.lbch-mi-3),
+.lbch-focus-mi-4 .lbch-bar:not(.lbch-mi-4),
+.lbch-focus-mi-5 .lbch-bar:not(.lbch-mi-5),
+.lbch-focus-mi-6 .lbch-bar:not(.lbch-mi-6) { opacity: .13; }
+
+/* ---------- Tooltip ---------- */
+.lbch-tip {
+  position: fixed; z-index: 50; display: none;
+  background: rgba(20, 22, 26, .96); color: #fff;
+  padding: 8px 12px; border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .38);
+  font-family: var(--brand-font); font-size: 12px; line-height: 1.35;
+  pointer-events: none; max-width: 340px;
+}
+.lbch-tip-model { font-weight: 700; margin-bottom: 1px; }
+.lbch-tip-task { color: #cfd6dd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+.lbch-tip-val { color: #fff; margin-top: 3px; }
+.lbch-tip-val b { color: #9fd0ff; }
