@@ -16,11 +16,14 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="./static/css/bidex-100.css">
+  <link rel="stylesheet" href="./static/css/lb_chart.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/lb_chart_data.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/lb_chart.js"></script>
 </head>
 
 <body>
@@ -242,8 +245,8 @@
               <button class="lb-chip" data-lb-toggle="domain" data-lb-value="ood" type="button">Out-of-Domain</button>
             </div>
           </div>
-          <a class="lb-chip lb-chart-link" href="./task_bar_chart.html" target="_blank" rel="noopener">
-            Per-task bar chart &nearr;
+          <a class="lb-chip lb-chart-link" href="#per-task-chart">
+            Per-task bar chart
           </a>
           <span class="lb-stamp">2 seeds &times; 25 eps &middot; 106 tasks &middot; 10,600 rollouts/model</span>
         </div>
@@ -274,6 +277,14 @@
       </p>
     </div>
   </section>
+
+  <!-- ===================== PER-TASK BAR CHART ===================== -->
+  <section class="section lbch-section" id="per-task-chart">
+    <div class="container lbch-container">
+      <div id="lbch-root"><!-- rendered by static/js/lb_chart.js --></div>
+    </div>
+  </section>
+  <div class="lbch-tip" id="lbch-tip"></div>
 
   <!-- ===================== CITATION ===================== -->
   <section class="section" style="padding-top:1rem;">
