@@ -80,6 +80,7 @@
         <a class="btn btn-resource" href="./static/pdf/BiDex_Supplementary_Material.pdf">Supplementary</a>
         <a class="btn btn-primary" href="#docs">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
       </nav>
+      <p class="hero-release-note" role="note"><span class="hrn-dot" aria-hidden="true"></span>Code, dataset & 3D assets will be open-sourced by <b>October 14, 2026</b>.</p>
     </div>
   </div>
   <section class="proof hero-proof" aria-label="BiDex-100 at a glance">
@@ -108,6 +109,43 @@
 }
 </style>
 
+<!-- Open-source release notice styling -->
+<style>
+.hero-release-note{
+  display:inline-flex; align-items:center; gap:9px;
+  margin:16px 0 0; padding:8px 14px;
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--line-strong);
+  border-radius:999px;
+  font-family:var(--body); font-size:13.5px; color:var(--text); line-height:1.5;
+}
+.hero-release-note .hrn-dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 3px var(--accent-pale);
+  flex-shrink:0;
+}
+.hero-release-note b{color:var(--bone);}
+
+.release-banner{
+  display:flex; align-items:flex-start; gap:16px;
+  margin:0 0 28px; padding:16px 20px;
+  background:var(--accent-pale);
+  border:1px solid color-mix(in srgb, var(--accent-base) 22%, transparent);
+  border-left:4px solid var(--accent);
+  border-radius:var(--r-lg);
+}
+.release-banner .rb-badge{
+  flex-shrink:0;
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:600;
+  color:var(--accent); background:#fff;
+  border:1px solid color-mix(in srgb, var(--accent-base) 22%, transparent);
+  border-radius:999px; padding:6px 11px; white-space:nowrap;
+}
+.release-banner .rb-text{margin:0; font-size:15px; color:var(--text); line-height:1.6;}
+.release-banner .rb-text b{color:var(--bone);}
+@media (max-width:600px){ .release-banner{flex-direction:column; align-items:flex-start; gap:10px;} }
+</style>
+
 <!-- ================= ABSTRACT ================= -->
 <section class="section evidence-band evidence-band--paper" id="abstract" data-section-index="01">
   <div class="container">
@@ -115,7 +153,7 @@
       <p class="eyebrow">Abstract</p>
       <h2>Benchmarking bimanual dexterous manipulation along capability edges.</h2>
     </div>
-    <p class="abstract-text">Bimanual manipulation with dexterous hands has attracted growing attention in research on robotic action models. However, few studies have developed benchmarks specifically tailored for dexterous manipulation, leaving it unclear <i>how</i> the dexterous-manipulation capability of existing models actually bears out. We present <b>BiDex-100</b>, a simulation benchmark for bimanual dexterous manipulation that combines broad task coverage, multi-dimensional evaluation, and high-DoF hand embodiments. Concretely, the benchmark comprises <b>106 tasks</b> organized along five capability axes: <b>Generalization</b>, <b>Instruction Following</b>, <b>Limited Demonstrations</b>, <b>Long Horizon</b>, and <b>Memory</b>. Each task is paired with an out-of-domain variant featuring controlled visual and spatial changes, allowing systematic assessment of robustness. In addition, the benchmark supports two embodiments and provides <b>8,080 success-validated teleoperated demonstrations</b>, totaling 6.25M frames. We evaluate seven recent Vision-Language-Action models under a unified protocol, establishing baselines for capability-specific performance, robustness, and data efficiency. Code, tasks, data, and evaluation tools will be made public.</p>
+    <p class="abstract-text">Bimanual manipulation with dexterous hands has attracted growing attention in research on robotic action models. However, few studies have developed benchmarks specifically tailored for dexterous manipulation, leaving it unclear <i>how</i> the dexterous-manipulation capability of existing models actually bears out. We present <b>BiDex-100</b>, a simulation benchmark for bimanual dexterous manipulation that combines broad task coverage, multi-dimensional evaluation, and high-DoF hand embodiments. Concretely, the benchmark comprises <b>106 tasks</b> organized along five capability axes: <b>Generalization</b>, <b>Instruction Following</b>, <b>Limited Demonstrations</b>, <b>Long Horizon</b>, and <b>Memory</b>. Each task is paired with an out-of-domain variant featuring controlled visual and spatial changes, allowing systematic assessment of robustness. In addition, the benchmark supports two embodiments and provides <b>8,080 success-validated teleoperated demonstrations</b>, totaling 6.25M frames. We evaluate seven recent Vision-Language-Action models under a unified protocol, establishing baselines for capability-specific performance, robustness, and data efficiency. Code, tasks, data, and evaluation tools will be made public by October 14, 2026.</p>
   </div>
 </section>
 
@@ -331,6 +369,10 @@
     <div class="section-head">
       <p class="eyebrow">Get Started</p>
       <h2>Code, tasks, data & evaluation tools.</h2>
+    </div>
+    <div class="release-banner" role="note">
+      <span class="rb-badge" aria-hidden="true">Open Source</span>
+      <p class="rb-text"><b>Code, dataset, and 3D assets will be open-sourced by October 14, 2026.</b> The full task suites, the 8,080-episode teleoperation dataset (94 GB), and the ~300 object meshes will be released on GitHub and Hugging Face.</p>
     </div>
     <div class="resource-grid" id="resource-grid"></div>
     <div style="margin-top:30px;">
