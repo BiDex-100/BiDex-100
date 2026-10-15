@@ -13,10 +13,10 @@ efficiency.
 ## Resources
 
 - 🌐 **Project page (this site):** see `index.html` (served from the `gh-pages` branch).
-- 💻 **Code, tasks & evaluation tooling:** https://github.com/inclusionAI/BiDex-100
-- 📊 **Leaderboard:** on the [project page](https://bidex-100.github.io/BiDex-100/#leaderboard).
-- 📦 **Teleoperation data (8,080 episodes):** [LeRobot v2.1](https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/datasets/lerobotv21) · [LeRobot v3.0](https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/datasets/lerobotv30)
-- 🧱 **Object asset library (~300 assets):** https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/assets
+- 💻 **Code, tasks & evaluation tooling:** https://github.com/robbyant-research/BiDex-100
+- 📊 **Leaderboard:** on this project page → *Leaderboard*.
+- 📦 **Teleoperation data (8,080 episodes):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets
+- 🧱 **Object asset library (~300 assets):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets
 
 ## Citation
 
@@ -24,6 +24,6 @@ efficiency.
 @misc{bidex100,
   title         = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks},
   year          = {2025},
-  howpublished  = {https://github.com/inclusionAI/BiDex-100},
+  howpublished  = {https://github.com/robbyant-research/BiDex-100},
 }
 ```

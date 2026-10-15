@@ -338,6 +338,68 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
   margin-inline:calc(50% - min(700px, 50vw - 16px));
 }
 
+/* Static leaderboard: server table structure with RoboDojo-style controls and hierarchy. */
+.leaderboard-card{
+  width:min(1420px,calc(100vw - 32px));
+  margin-inline:calc(50% - min(710px,50vw - 16px));
+  background:var(--panel);border:1px solid var(--line-strong);border-radius:12px;
+  box-shadow:var(--evidence-shadow);overflow:hidden;
+}
+.leaderboard-toolbar{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:14px 18px;border-bottom:1px solid var(--line);background:#fbfaf7;
+}
+.lb-filters{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;}
+.lb-filters .field{display:flex;flex-direction:column;gap:6px;margin:0;}
+.lb-filters .field>span{color:var(--text-faint);font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;}
+.lb-select{
+  min-height:32px;padding:0 30px 0 12px;border:1px solid var(--line-strong);border-radius:999px;
+  background:var(--surface);color:var(--bone);font:600 12px var(--body);cursor:pointer;
+}
+.lb-select:hover,.lb-select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-pale);}
+.leaderboard-toolbar .rt-chips{gap:2px;padding:2px;border:1px solid var(--line-strong);border-radius:999px;background:var(--surface);}
+.leaderboard-toolbar .rt-chip{padding:5px 12px;border:0;border-radius:999px;font-size:12px;}
+.leaderboard-toolbar .rt-chip.active{background:var(--accent-light);color:var(--accent);}
+.lb-updated{margin-left:auto;padding-bottom:5px;color:var(--text-faint);font:italic 11px var(--body);white-space:nowrap;}
+.leaderboard-card .lb-wrap{margin:0;padding:0;}
+.lb-table.compact{min-width:1280px;table-layout:fixed;border:0;border-radius:0;box-shadow:none;background:var(--panel);}
+.lb-table.compact th,.lb-table.compact td{padding:12px 11px;}
+.lb-table.compact thead th{
+  background:#f4f1eb;color:var(--text-faint);border-bottom:1px solid var(--line-strong);
+  font:700 10px var(--mono);letter-spacing:.055em;text-transform:uppercase;
+}
+.lb-table.compact thead th small{display:block;margin-top:2px;color:var(--text-faint);font-size:9px;font-weight:500;letter-spacing:0;text-transform:none;}
+.lb-sort-btn{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;}
+.lb-sort-btn:hover{color:var(--accent);}
+.lb-table.compact th.is-sorted{color:var(--accent);background:#eaf2ef;}
+.lb-table.compact th.is-sorted::after{content:" ↓";font-size:10px;}
+.lb-table.compact td.is-sorted{background:rgba(26,122,109,.035);}
+.lb-table.compact th.rk,.lb-table.compact td.rk{width:54px;}
+.lb-table.compact th.pn,.lb-table.compact td.pn{width:190px;}
+.lb-table.compact td.pn small{display:block;margin:3px 0 0;color:var(--text-faint);font:10px var(--mono);}
+.lb-table.compact th.type,.lb-table.compact td.type{width:76px;border-left:1px solid var(--line-strong);}
+.type-tag{
+  display:inline-flex;align-items:center;justify-content:center;min-width:42px;padding:3px 8px;
+  border:1px solid rgba(26,122,109,.24);border-radius:999px;background:rgba(26,122,109,.09);
+  color:var(--accent);font:700 10px var(--mono);letter-spacing:.04em;
+}
+.lb-table.compact .overall{border-left:1px solid rgba(26,122,109,.18);border-right:1px solid rgba(26,122,109,.18);}
+.metric-pair{display:inline-flex;align-items:baseline;justify-content:center;gap:4px;white-space:nowrap;font:11px var(--mono);}
+.metric-pair .success{color:var(--bone);font-weight:600;}
+.metric-pair .score{color:var(--text-dim);font-weight:500;}
+.metric-pair .best{color:var(--accent);font-weight:800;}
+.metric-pair>span{color:var(--line-strong);}
+.rank-badge{color:var(--text-faint);font:700 12px var(--mono);}
+.rank-badge.rank-1,.rank-badge.rank-2,.rank-badge.rank-3{font-size:17px;line-height:1;}
+.lb-table.compact tbody tr{transition:background .15s;}
+.lb-table.compact tbody tr:hover td{background:var(--accent-pale);}
+.lb-table.compact tbody tr.lead td.pn::before{content:none;}
+.leaderboard-card>.evidence-caption{margin:0;max-width:none;padding:12px 18px 14px;border-top:1px solid var(--line);text-align:center;background:#fbfaf7;}
+@media(max-width:900px){
+  .leaderboard-toolbar{align-items:flex-start;flex-direction:column;padding:12px 14px;}
+  .lb-filters{width:100%;}.lb-updated{margin-left:0;}
+}
+
 .task-rail{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;}
 .filter-chip{font-family:var(--mono); font-size:12px; padding:7px 13px; border-radius:999px; border:1px solid var(--line-strong); background:transparent; color:var(--text-dim); cursor:pointer; transition:color var(--duration-fast),background var(--duration-fast),border-color var(--duration-fast);}
 .filter-chip:hover{color:var(--bone); border-color:var(--metal-dim);}
@@ -472,6 +534,7 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .results-table .mean-label{text-align:left; font-family:var(--mono); font-weight:600; color:var(--bone); font-size:12px;}
 .results-table td.avg{font-family:var(--mono); font-weight:600; color:var(--accent); background:var(--accent-pale); cursor:default;}
 .rtable-best{font-weight:700; color:var(--accent);}
+.htooltip{position:fixed;z-index:120;width:min(250px,calc(100vw - 24px));padding:11px 12px;border:1px solid var(--line-strong);border-radius:10px;background:rgba(255,254,251,.98);box-shadow:0 16px 36px -18px rgba(44,42,37,.38);color:var(--text-dim);font:11px/1.45 var(--mono);opacity:0;pointer-events:none;transition:opacity .12s;}
 
 .resource-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
 .resource-card{background:var(--panel); border:var(--frame-border); border-radius:var(--evidence-radius); padding:20px; transition:border-color .2s,transform .2s,box-shadow .2s,background .2s; cursor:pointer; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; box-shadow:var(--evidence-shadow); position:relative; overflow:hidden;}
@@ -499,6 +562,7 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .hidden{display:none !important;}
 .fade-in{opacity:0; transform:translateY(16px); transition:opacity .6s,transform .6s;}
 .fade-in.in{opacity:1; transform:none;}
+.fade-in:target{opacity:1; transform:none;}
 .poster-ph{display:flex; align-items:flex-end; justify-content:center; overflow:hidden;}
 .poster-ph img{filter:saturate(.92);}
 

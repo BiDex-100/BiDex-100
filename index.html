@@ -73,10 +73,10 @@
         <p class="hero-affiliation-slot">Anonymous Institution(s) · Submitted for review</p>
       </div>
       <nav class="cta" aria-label="Project resources">
-        <a class="btn btn-resource" href="https://github.com/inclusionAI/BiDex-100" target="_blank" rel="noopener">Paper</a>
-        <a class="btn btn-resource" href="https://github.com/inclusionAI/BiDex-100" target="_blank" rel="noopener">Code</a>
-        <a class="btn btn-resource" href="https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/datasets" target="_blank" rel="noopener">Dataset</a>
-        <a class="btn btn-resource" href="https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/assets" target="_blank" rel="noopener">Assets</a>
+        <a class="btn btn-resource" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener">Paper</a>
+        <a class="btn btn-resource" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener">Code</a>
+        <a class="btn btn-resource" href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets" target="_blank" rel="noopener">Dataset</a>
+        <a class="btn btn-resource" href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets" target="_blank" rel="noopener">Assets</a>
         <a class="btn btn-resource" href="./static/pdf/BiDex_Supplementary_Material.pdf">Supplementary</a>
         <a class="btn btn-primary" href="#docs">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
       </nav>
@@ -157,12 +157,12 @@
             <th>Bimanual</th><th>DoF / hand</th><th>Tasks</th><th>Progress score</th><th>OOD protocol</th><th>Demonstrations</th>
           </tr></thead>
           <tbody>
-            <tr><td>Meta-World</td><td><span class="nx">✗</span></td><td>—</td><td>50</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td></tr>
+            <tr><td>Meta-World</td><td><span class="nx">✗</span></td><td>—</td><td>50</td><td><span class="yk">✓</span></td><td><span class="yk">✓</span></td><td><span class="nx">✗</span></td></tr>
             <tr><td>RLBench</td><td><span class="nx">✗</span></td><td>—</td><td>100</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td>synth.</td></tr>
-            <tr><td>LIBERO</td><td><span class="nx">✗</span></td><td>—</td><td>130</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td>50 / task</td></tr>
-            <tr><td>CALVIN</td><td><span class="nx">✗</span></td><td>—</td><td>34</td><td>partial</td><td><span class="nx">✗</span></td><td>teleop</td></tr>
-            <tr><td>RoboCasa</td><td><span class="nx">✗</span></td><td>—</td><td>100</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td>50–100 / task</td></tr>
-            <tr><td>ManiSkill2</td><td><span class="nx">✗</span></td><td>—</td><td>20+</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td>synth.</td></tr>
+            <tr><td>LIBERO</td><td><span class="nx">✗</span></td><td>—</td><td>130</td><td><span class="nx">✗</span></td><td><span class="nx">✗</span></td><td>teleop.</td></tr>
+            <tr><td>CALVIN</td><td><span class="nx">✗</span></td><td>—</td><td>34</td><td>partial</td><td><span class="yk">✓</span></td><td>teleop</td></tr>
+            <tr><td>RoboCasa</td><td><span class="nx">✗</span></td><td>—</td><td>100</td><td><span class="nx">✗</span></td><td><span class="yk">✓</span></td><td>teleop+synth.</td></tr>
+            <tr><td>ManiSkill2</td><td><span class="yk">✓</span></td><td>—</td><td>20</td><td><span class="nx">✗</span></td><td><span class="yk">✓</span></td><td>synth.</td></tr>
             <tr><td>RoboTwin 2.0</td><td><span class="yk">✓</span></td><td>—</td><td>50</td><td><span class="nx">✗</span></td><td><span class="yk">✓</span></td><td>synth.</td></tr>
             <tr><td>RoboDojo</td><td><span class="yk">✓</span></td><td>—</td><td>60</td><td><span class="yk">✓</span></td><td><span class="yk">✓</span></td><td>teleop+synth.</td></tr>
             <tr><td>DexJoCo</td><td><span class="yk">✓</span></td><td>16</td><td>11</td><td><span class="nx">✗</span></td><td><span class="yk">✓</span></td><td>teleop.</td></tr>
@@ -172,7 +172,7 @@
           </tbody>
         </table>
         </div>
-        <p class="evidence-caption">BiDex-100 occupies the vacant corner of this design space: bimanual 22-DoF dexterous hands, five capability axes, progress-based predicate scoring, matched ID/OOD evaluation, and a large released teleoperated dataset. The matrix reproduces the paper's benchmark-comparison table.</p>
+        <p class="evidence-caption"><b>Columns.</b> DoF denotes the degrees of freedom of one dexterous hand; — denotes a parallel-jaw gripper without multi-fingered dexterity. Progress denotes non-binary partial-credit scoring, OOD denotes a built-in OOD protocol, and Demonstrations reports released data. “teleop.” denotes human teleoperation, “synth.” denotes scripted or synthetic data, and “teleop+synth.” denotes both sources. BiDex-100 combines bimanual 22-DoF dexterous hands, progress-based scoring, matched ID/OOD evaluation, and 8,080 released teleoperated demonstrations.</p>
       </div>
     </div>
   </div>
@@ -248,10 +248,10 @@
     <div class="section-head">
       <p class="eyebrow">Domain Randomization</p>
       <h2>Matched In-Domain / Out-of-Domain evaluation through controlled randomization.</h2>
-      <p class="lead">Goals are machine-checkable predicate conjunctions with deterministic seeding, progress-based subtask credit, and matched In-Domain / Out-of-Domain variants. <b>Progress score</b> rewards partial completion in [0,100]; <b>strict success</b> requires a perfect 100. Below, each of the five randomized conditions is demonstrated from the head camera on a different out-of-domain task.</p>
+      <p class="lead">Goals are machine-checkable predicate conjunctions with deterministic seeding and matched In-Domain / Out-of-Domain variants. <b>Strict success</b> requires a perfect 100; the following <b>progress score</b> rewards partial completion in [0,100]. Below, each randomized condition is demonstrated from the head camera on a different out-of-domain task.</p>
     </div>
     <div class="eval-tiers">
-      <div class="eval-tier"><div class="top-bar" style="background:var(--green);"></div><div class="num">01</div><div class="n">Progress scoring</div><div class="d">Subtasks latch monotonically; the score sums weighted subtask credit (Σ wₖ = 100), rewarding partial progress while keeping a strict success criterion.</div></div>
+      <div class="eval-tier"><div class="top-bar" style="background:var(--green);"></div><div class="num">01</div><div class="n">Success & progress</div><div class="d">Strict success requires all predicates; the following score sums latched weighted subtask credit (Σ wₖ = 100) to expose partial progress.</div></div>
       <div class="eval-tier"><div class="top-bar" style="background:var(--accent);"></div><div class="num">02</div><div class="n">Latched & ordered credit</div><div class="d">Must-hold, latch-violation and ordered-subtask mechanisms defeat touch-and-go, forbidden outcomes and out-of-sequence gains.</div></div>
       <div class="eval-tier"><div class="top-bar" style="background:var(--amber);"></div><div class="num">03</div><div class="n">Matched ID / OOD</div><div class="d">Every task has one baked <code>__ood</code> variant (identical seed & initial state) over five scripted shifts — directly comparable robustness.</div></div>
       <div class="eval-tier"><div class="top-bar" style="background:var(--brick);"></div><div class="num">04</div><div class="n">Data efficiency</div><div class="d">The Limited-Demonstrations axis isolates a fixed 30-demonstration regime, measuring skill acquisition when training data are scarce.</div></div>
@@ -293,25 +293,49 @@
   <div class="container">
     <div class="section-head">
       <p class="eyebrow">Leaderboard</p>
-      <h2>Overall ID / OOD scores and detailed per-task results.</h2>
+      <h2>7 co-trained models.</h2>
+      <p class="lead"><b>SR</b> strict success rate · <b>Score</b> progress score.</p>
     </div>
 
-    <h4 class="lb-title">Aggregate by capability axis <span class="lb-prelim">7 models</span></h4>
-    <div class="card-frame agg-wide" style="margin-bottom:28px;">
-      <div class="lb-wrap lb-wrap--wide"><table class="lb-table" id="agg-table"></table></div>
-      <p class="evidence-caption">Per capability axis, in-domain / out-of-domain mean progress score and strict success rate (each averaged over the axis's task-runs), plus an <b>Overall</b> group (all-score aggregate progress score and strict success rate). The five colored axis groups mirror the Detailed Results breakdown below; the <b>best value in each column is bolded</b>.</p>
+    <div class="leaderboard-card" style="margin-bottom:28px;">
+      <div class="leaderboard-toolbar">
+        <div class="lb-filters" aria-label="Leaderboard controls">
+          <label class="field" for="lb-dimension"><span>Dimension</span>
+            <select class="lb-select" id="lb-dimension">
+              <option value="overall">Overall</option>
+              <option value="Generalization">Generalization</option>
+              <option value="Instruction_Following">Instruction-Following</option>
+              <option value="Limited_Demonstrations">Limited-Demonstrations</option>
+              <option value="Long_Horizon">Long-Horizon</option>
+              <option value="Memory">Memory</option>
+            </select>
+          </label>
+          <div class="field"><span>Rank by</span><div class="rt-chips">
+            <button class="rt-chip active" data-lb-group="metric" data-k="succ">SR</button>
+            <button class="rt-chip" data-lb-group="metric" data-k="score">Score</button>
+          </div></div>
+          <div class="field"><span>Domain</span><div class="rt-chips">
+            <button class="rt-chip active" data-lb-group="domain" data-k="all">ID + OOD</button>
+            <button class="rt-chip" data-lb-group="domain" data-k="id">ID</button>
+            <button class="rt-chip" data-lb-group="domain" data-k="ood">OOD</button>
+          </div></div>
+        </div>
+        <time class="lb-updated" datetime="2026-10-13">Updated 2026.10.13</time>
+      </div>
+      <div class="lb-wrap"><table class="lb-table compact" id="agg-table"></table></div>
+      <p class="evidence-caption">Every result cell is shown as <b>SR / Score</b>. Ranking follows the selected dimension, metric, and domain; capability columns are equal-weight means over their tasks. Best values are highlighted.</p>
     </div>
 
     <div class="section-head" style="margin-top:38px; margin-bottom:14px;">
       <p class="eyebrow">Detailed Results</p>
       <h2>Per-task evaluation results · 106 tasks × 7 models.</h2>
-      <p class="lead">Each cell is a model's score on one task, computed from 2 seeds × 25 episodes (50 rollouts) per domain. The heatmap runs light → teal as the value rises; the best model per task is bolded. Toggle the metric (progress vs. strict success) and the domain (ID / OOD / combined).</p>
+      <p class="lead">Each cell is computed from 2 fixed seeds × 25 episodes (50 rollouts) per domain. Strict success is shown first by default; toggle the metric or domain to inspect partial progress and OOD degradation.</p>
     </div>
     <div class="chart-panel wide">
       <div class="rt-controls">
         <div class="field"><span>Metric</span><div class="rt-chips">
-          <button class="rt-chip active" data-group="metric" data-k="score">Progress score</button>
-          <button class="rt-chip" data-group="metric" data-k="succ">Strict success</button>
+          <button class="rt-chip active" data-group="metric" data-k="succ">Strict success</button>
+          <button class="rt-chip" data-group="metric" data-k="score">Progress score</button>
         </div></div>
         <div class="field"><span>Domain</span><div class="rt-chips">
           <button class="rt-chip active" data-group="domain" data-k="all">ID + OOD (mean)</button>
@@ -339,7 +363,7 @@
   title         = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous
                    Manipulation Across 100+ Simulation Tasks},
   year          = {2025},
-  howpublished  = {https://github.com/inclusionAI/BiDex-100}
+  howpublished  = {https://github.com/robbyant-research/BiDex-100}
 }</pre>
         <div class="actions">
           <button class="btn" id="copy-bib">Copy BibTeX</button>
@@ -371,12 +395,12 @@
         <h5>Reproduce</h5>
         <a href="#leaderboard">Baselines</a>
         <a href="#domain-randomization">Evaluation</a>
-        <a href="https://github.com/inclusionAI/BiDex-100" target="_blank" rel="noopener">Code</a>
+        <a href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener">Code</a>
       </div>
       <div>
         <h5>Data</h5>
-        <a href="https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/datasets" target="_blank" rel="noopener">Teleoperation data</a>
-        <a href="https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/assets" target="_blank" rel="noopener">Object assets</a>
+        <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets" target="_blank" rel="noopener">Teleoperation data</a>
+        <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets" target="_blank" rel="noopener">Object assets</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -394,9 +418,9 @@
 (function(){
   var g=document.getElementById('resource-grid'); if(!g) return;
   var cards=[
-   {title:'Code & Task Suites', body:'Task specifications (YAML), the MuJoCo simulation, the vectorized evaluation harness, and the retargeting stack — all open-sourced.', meta:'github.com/inclusionAI', href:'https://github.com/inclusionAI/BiDex-100'},
-   {title:'Demonstration Data', body:'8,080 success-validated episodes, 6.25M frames, six RGB-D streams, 58-DoF actions and 130-D observations, available in LeRobot v2.1 and v3.0 formats.', meta:'Hugging Face · LeRobot v2.1 / v3.0', href:'https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/datasets'},
-   {title:'Object Assets', body:'~300 object meshes (food, tableware, containers, tools, articulated appliances) with real mass and friction — spanning RoboCasa-Objaverse, Lightwheel, HOPE, Articraft and more.', meta:'Hugging Face · Assets', href:'https://huggingface.co/datasets/inclusionAI/BiDex-100/tree/main/assets'},
+   {title:'Code & Task Suites', body:'Task specifications (YAML), the MuJoCo simulation, the vectorized evaluation harness, and the retargeting stack — all open-sourced.', meta:'github.com/robbyant-research', href:'https://github.com/robbyant-research/BiDex-100'},
+   {title:'Demonstration Data', body:'8,080 success-validated episodes, 6.25M frames, six RGB-D streams, 58-DoF actions and 130-D observations in LeRobot v2.1.', meta:'Hugging Face · 94 GB', href:'https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets'},
+   {title:'Object Assets', body:'~300 object meshes (food, tableware, containers, tools, articulated appliances) with real mass and friction — spanning RoboCasa-Objaverse, Lightwheel, HOPE, Articraft and more.', meta:'Hugging Face · Assets', href:'https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets'},
    {title:'Supplementary', body:'Extended descriptions, embodiment details, per-axis statistics, and the full 106-task atlas.', meta:'PDF', href:'./static/pdf/BiDex_Supplementary_Material.pdf'}
   ];
   cards.forEach(function(r){var a=document.createElement('a'); a.className='resource-card'; if(r.href){a.href=r.href; a.target='_blank'; a.rel='noopener noreferrer';} a.innerHTML='<div class="ic">📄</div><h4>'+r.title+'</h4><p>'+r.body+'</p><div class="meta">'+r.meta+'</div>'; g.appendChild(a);});
