@@ -65,8 +65,8 @@
     });
     // summary card
     const s=el("div","cap-card summary");
-    s.innerHTML=`<div class="n">106 · 5 axes · graded · ID/OOD</div><h3>106 task specifications</h3>
-      <p class="desc">Across the 106 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances. Each ships with a baked <code>__ood</code> variant with identical seed and initial state, so every policy sees identical out-of-domain conditions. Strict success requires a score of 100; graded predicate scoring additionally exposes partial progress.</p>`;
+    s.innerHTML=`<div class="n">106 · 5 axes · progress · ID/OOD</div><h3>106 task specifications</h3>
+      <p class="desc">Across the 106 specifications, tasks carry 1–10 subtasks (mean 3.6) and compose 472 predicate instances. Each ships with a baked <code>__ood</code> variant with identical seed and initial state, so every policy sees identical out-of-domain conditions. Strict success requires a score of 100; progress-based predicate scoring additionally exposes partial completion.</p>`;
     g.appendChild(s);
   })();
 
