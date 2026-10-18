@@ -25,7 +25,7 @@
     }
     return ST.domain === 'ood' ? b : a;
   }
-  function fmtPct(v) { return v == null ? '—' : (Math.round(v * 10) / 10).toFixed(1) + '%'; }
+  function fmtPct(v) { return v == null ? '—' : Number(v).toFixed(2) + '%'; }
 
   // geometry
   var LABEL_W = 184, PLOT_W = 720, RK = 14, W = LABEL_W + PLOT_W + RK;
@@ -89,7 +89,7 @@
           var fill = D.models[mi].color;
           body += '<rect class="lbch-bar lbch-mi-' + mi + '" data-mi="' + mi +
             '" data-model="' + esc(D.models[mi].name) + '" data-task="' + esc(task.name) +
-            '" data-val="' + (Math.round(v * 10) / 10) + '" x="' + LABEL_W + '" y="' + by.toFixed(2) +
+            '" data-val="' + Number(v).toFixed(2) + '" x="' + LABEL_W + '" y="' + by.toFixed(2) +
             '" width="' + w.toFixed(2) + '" height="' + BAR_H + '" rx="1.1" fill="' + fill + '"/>';
         });
       });

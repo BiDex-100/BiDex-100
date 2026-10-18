@@ -10,7 +10,6 @@
   const AX = B.AXES.reduce((o,a)=>{o[a.key]=a; return o;},{});
   const axisColor = k => (AX[k]&&AX[k].color) || "var(--metal)";
   const axisShort = k => ({Generalization:"GEN",Instruction_Following:"IF",Limited_Demonstrations:"LD",Long_Horizon:"LH",Memory:"MEM"}[k]||k);
-  const fmt1 = n => Number(n).toFixed(1);
   const fmt2 = n => Number(n).toFixed(2);
   const MODELS = B.MODELS;            // ordered strongest -> weakest
   const MID = {}; MODELS.forEach(m=>MID[m.id]=m);
@@ -179,7 +178,7 @@
     const a=AX[t.axis];
     const c=el("div","task-card"); c.style.setProperty("--c",a.color); c.dataset.id=t.id; c.dataset.axis=t.axis;
     const best=bestModel(t.id,"id","succ");
-    const mini=(t.stages||[]).map(s=>`<span class="s" style="background:${a.color};opacity:${0.25+0.75*(s.rate/100)}" title="${s.name}: ${s.rate}%"></span>`).join("");
+    const mini=(t.stages||[]).map(s=>`<span class="s" style="background:${a.color};opacity:${0.25+0.75*(s.rate/100)}" title="${s.name}: ${fmt2(s.rate)}%"></span>`).join("");
     c.innerHTML=`
       <div class="thumb poster-ph">
         <img src="${B.ASSET_IMG}/tasks/${t.id}.jpg" alt="${t.name}" loading="lazy">
@@ -191,7 +190,7 @@
         <h3>${t.name}</h3>
         <div class="stage-mini">${mini || '<span class="s"></span>'}</div>
         <div class="task-tags"><span class="t"><span class="mono">${t.stages?t.stages.length:1} stages</span></span>
-          ${best?`<span class="t" style="color:${best.color};border-color:${best.color}55">best SR ${fmt1(best.v)}% · ${best.name}</span>`:''}</div>
+          ${best?`<span class="t" style="color:${best.color};border-color:${best.color}55">best SR ${fmt2(best.v)}% · ${best.name}</span>`:''}</div>
       </div>`;
     c.addEventListener("click",()=>openModal(t)); return c;
   }
@@ -291,7 +290,7 @@
     const a=AX[t.axis];
     const ov=el("div","modal-overlay"); const r=B.RESULTS[t.id];
     const rowsHtml = MODELS.map(m=>{ const d=r?r[m.id]:null; if(!d) return "";
-      const sidr=`<td>${fmt1(d.succ_id)}</td><td>${fmt1(d.score_id)}</td><td>${fmt1(d.succ_ood)}</td><td>${fmt1(d.score_ood)}</td>`;
+      const sidr=`<td>${fmt2(d.succ_id)}</td><td>${fmt2(d.score_id)}</td><td>${fmt2(d.succ_ood)}</td><td>${fmt2(d.score_ood)}</td>`;
       return `<tr><td><span class="swatch" style="--c:${m.color}"><i style="background:${m.color}"></i>${m.name}</span></td>${sidr}</tr>`; }).join("");
     // per-subtask: ID (lingbot) and OOD (lingbot if available)
     const lingModel=MODELS.find(m=>m.name==="LingBot-VLA-v2");
@@ -324,7 +323,7 @@
     $(".modal-close",ov).addEventListener("click",close); ov.addEventListener("click",e=>{ if(e.target===ov) close(); });
     document.addEventListener("keydown",function esc(e){ if(e.key==="Escape"){close(); document.removeEventListener("keydown",esc);} });
   }
-  function subRowHtml(idx,name,rate){ return `<div class="sub-row"><span class="nm">${idx}. ${name}</span><span class="val">${fmt1(rate)}%</span><div class="sub-bar"><i style="width:${rate}%"></i></div></div>`; }
+  function subRowHtml(idx,name,rate){ return `<div class="sub-row"><span class="nm">${idx}. ${name}</span><span class="val">${fmt2(rate)}%</span><div class="sub-bar"><i style="width:${rate}%"></i></div></div>`; }
 
   /* ---------- Domain randomization grid: five head-camera clips (one per mode) ---------- */
   (function(){

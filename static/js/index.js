@@ -42,7 +42,7 @@ function lbVal(model, axisKey) {
   return LB.domain === 'ood' ? row[mi + 2] : row[mi];
 }
 
-function lbFmt(v) { return v.toFixed(1); }
+function lbFmt(v) { return v.toFixed(2); }
 
 // Best value per axis across all models (for the accent highlight).
 function lbBestPerAxis() {
