@@ -27,21 +27,13 @@
   /* ---------- Fullscreen cover and benchmark cards ---------- */
   (function(){
     const grid=$("#stats-grid");
-    if(grid) B.PROOF_STATS.forEach((s,i)=>{
+    if(grid) B.PROOF_STATS.forEach(s=>{
       const card=el("article","stat-card");
-      card.innerHTML=`<span class="stat-index">${String(i+1).padStart(2,"0")}</span><strong class="stat-value">${s.n}</strong><h3>${s.label}</h3><p>${s.sub}</p>`;
+      card.innerHTML=`<strong class="stat-value">${s.n}</strong><h3>${s.label}</h3><p>${s.sub}</p>`;
       grid.appendChild(card);
     });
-    const video=$("#hero-video"), button=$("#hero-playback");
-    if(!video||!button) return;
-    const update=()=>{
-      button.setAttribute("aria-pressed",video.paused?"true":"false");
-      button.innerHTML=video.paused?'Play background <span aria-hidden="true">▷</span>':'Pause background <span aria-hidden="true">Ⅱ</span>';
-    };
-    video.addEventListener("play",update); video.addEventListener("pause",update);
-    if(reduceMotion){ video.autoplay=false; video.pause(); }
-    button.addEventListener("click",()=>{ if(video.paused) video.play().catch(update); else video.pause(); });
-    update();
+    const video=$("#hero-video");
+    if(video&&reduceMotion){ video.autoplay=false; video.pause(); }
   })();
 
   /* ---------- Nav ---------- */
