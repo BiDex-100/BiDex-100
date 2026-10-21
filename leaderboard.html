@@ -44,7 +44,7 @@
     <p class="eyebrow">BiDex-100 · Evaluation</p>
     <h1>Benchmark results.</h1>
     <p class="results-intro">Compare policies across capabilities.<br>Then look closer at every task.</p>
-    <div class="results-facts"><span>7 VLA models</span><span>106 tasks</span><span>Matched ID / OOD</span><span>50 rollouts per task & domain</span></div>
+    <div class="results-facts"><span>7 VLA models</span><span>106 tasks</span><span>Matched ID / OOD</span><span>100 rollouts per task · 50 ID + 50 OOD</span></div>
   </div>
 </header>
 <nav class="results-jump-nav" aria-label="Results sections"><div class="container"><a href="#news">News</a><a href="#leaderboard">Leaderboard</a><a href="#results">Detailed Results</a><a class="results-gallery-link" href="./#get-started">Task gallery ↗</a></div></nav>
@@ -99,7 +99,7 @@
     <div class="section-head detailed-heading" id="results">
       <p class="eyebrow">Detailed Results</p>
       <h2>Per-task evaluation results · 106 tasks × 7 models.</h2>
-      <p class="lead">Each cell is computed from 2 fixed seeds × 25 episodes (50 rollouts) per domain. Strict success is shown first by default; toggle the metric or domain to inspect partial progress and OOD degradation.</p>
+      <p class="lead">Each task has 100 rollouts in total: 50 In-Domain + 50 Out-of-Domain (2 fixed seeds × 25 episodes per domain). Strict success is shown first by default; toggle the metric or domain to inspect partial progress and OOD degradation.</p>
       <time class="results-updated" datetime="2026-10-19">Updated 2026.10.19</time>
     </div>
     <div class="results-task-filter">
