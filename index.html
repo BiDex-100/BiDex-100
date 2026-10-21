@@ -19,8 +19,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/layout.css">
 </head>
-<body>
+<body class="home-page">
 
 <!-- ================= NAV ================= -->
 <nav class="nav" id="nav">
@@ -31,10 +32,9 @@
     <div class="nav-links" id="nav-links">
       <a href="#overview">Overview</a>
       <a href="#benchmark">Benchmark</a>
-      <a href="#setup">Setup</a>
-      <a href="#domain-randomization">Domain Randomization</a>
       <a href="#get-started">Tasks</a>
-      <a href="#leaderboard">Leaderboard</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="leaderboard.html#news">News</a>
     </div>
     <div class="nav-cta">
       <a href="#docs" class="btn btn-primary">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
@@ -53,57 +53,52 @@
   <a href="#setup">Setup</a>
   <a href="#domain-randomization">Domain Randomization</a>
   <a href="#get-started">Tasks</a>
-  <a href="#leaderboard">Leaderboard</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="leaderboard.html#news">News</a>
   <a href="#docs">Get Started</a>
 </div>
 
 <main id="top">
 
 <!-- ================= HERO ================= -->
-<header class="hero masthead hero-centered" id="hero">
-  <video class="hero-bg-video" src="static/videos/showcase_cropped.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+<header class="hero hero-centered hero-fullscreen" id="hero">
+  <video class="hero-bg-video" id="hero-video" src="static/videos/showcase_cropped.mp4" poster="static/videos/showcase_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="hero-bg-scrim" aria-hidden="true"></div>
-  <div class="container">
+  <div class="container hero-stage">
     <div class="hero-content">
-      <p class="hero-wordmark">BiDex-100</p>
-      <h1 class="sr-only">BiDex-100</h1>
+      <p class="hero-kicker">Bimanual dexterous manipulation</p>
+      <h1 class="hero-wordmark">BiDex-100</h1>
       <p class="hero-subtitle">A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks</p>
       <div class="hero-contributors" aria-label="Authors and affiliations">
         <p class="hero-author-slot">Anonymous Authors</p>
         <p class="hero-affiliation-slot">Anonymous Institution(s) · Submitted for review</p>
       </div>
       <nav class="cta" aria-label="Project resources">
-        <a class="btn btn-resource" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener">Paper</a>
+        <a class="btn btn-resource" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/arxiv.svg" width="20" height="20" alt="" aria-hidden="true">Paper</a>
         <a class="btn btn-resource" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
         <a class="btn btn-resource" href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
         <a class="btn btn-resource" href="https://modelscope.cn/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
-        <a class="btn btn-resource" href="./static/pdf/BiDex_Supplementary_Material.pdf">Supplementary</a>
-        <a class="btn btn-primary" href="#docs">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-resource" href="static/pdf/BiDex_Supplementary_Material.pdf">Supplementary</a>
+        <a class="btn btn-primary" href="leaderboard.html">Leaderboard <span class="btn-arrow" aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </div>
+  <div class="hero-bottom">
+    <span class="hero-caption">A simulation benchmark.<br>Grounded in real demonstrations.</span>
+    <a class="hero-scroll" href="#capabilities">Explore the benchmark <span aria-hidden="true">↓</span></a>
+    <button class="hero-playback" id="hero-playback" type="button" aria-pressed="false">Pause background <span aria-hidden="true">Ⅱ</span></button>
+  </div>
 </header>
 
-<!-- ================= PROJECT VIDEO ================= -->
-<section class="video-placeholder" id="video">
-  <div class="container hero-banner">
-    <div class="section-head">
-      <p class="eyebrow">Video</p>
-      <h2>Project showcase.</h2>
+<section class="section stats-section" id="capabilities" aria-labelledby="stats-title">
+  <div class="container">
+    <div class="stats-heading">
+      <div><p class="eyebrow">BiDex-100 at a glance</p><h2 id="stats-title">One benchmark.<br>Multiple capability dimensions.</h2></div>
+      <p>From individual skills to long-horizon coordination, evaluate dexterous policies with shared tasks, data, and a reproducible protocol.</p>
     </div>
-    <figure class="hero-evidence">
-      <div class="hero-evidence-frame">
-        <video class="video-showcase-video" src="static/videos/video_compressed.mp4" autoplay muted loop playsinline preload="metadata" controls aria-label="BiDex-100 project showcase"></video>
-      </div>
-    </figure>
+    <div class="stats-grid" id="stats-grid"></div>
   </div>
 </section>
-
-<style>
-.video-showcase-video{
-  width:100%; height:auto; display:block; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius-md);
-}
-</style>
 
 <!-- ================= ABSTRACT ================= -->
 <section class="section evidence-band evidence-band--paper" id="abstract" data-section-index="01">
@@ -285,70 +280,30 @@
   </div>
 </section>
 
-<!-- ================= LEADERBOARD ================= -->
-<section class="section evidence-band evidence-band--results" id="leaderboard" data-section-index="07">
-  <div class="container">
+<!-- ================= PROJECT VIDEO ================= -->
+<section class="video-placeholder" id="video">
+  <div class="container hero-banner">
     <div class="section-head">
-      <p class="eyebrow">Leaderboard</p>
-      <h2>7 co-trained models.</h2>
-      <p class="lead"><b>SR</b> strict success rate · <b>Score</b> progress score.</p>
-      <time class="results-updated" datetime="2026-10-19">Updated 2026.10.19</time>
+      <p class="eyebrow">Video</p>
+      <h2>Project showcase.</h2>
     </div>
-
-    <div class="leaderboard-card" style="margin-bottom:28px;">
-      <div class="leaderboard-toolbar">
-        <div class="lb-filters" aria-label="Leaderboard controls">
-          <label class="field" for="lb-dimension"><span>Dimension</span>
-            <select class="lb-select" id="lb-dimension">
-              <option value="overall">Overall</option>
-              <option value="Generalization">Generalization</option>
-              <option value="Instruction_Following">Instruction-Following</option>
-              <option value="Limited_Demonstrations">Limited-Demonstrations</option>
-              <option value="Long_Horizon">Long-Horizon</option>
-              <option value="Memory">Memory</option>
-            </select>
-          </label>
-          <div class="field"><span>Rank by</span><div class="rt-chips">
-            <button class="rt-chip active" data-lb-group="metric" data-k="succ">SR</button>
-            <button class="rt-chip" data-lb-group="metric" data-k="score">Score</button>
-          </div></div>
-          <div class="field"><span>Domain</span><div class="rt-chips">
-            <button class="rt-chip active" data-lb-group="domain" data-k="all">ID + OOD</button>
-            <button class="rt-chip" data-lb-group="domain" data-k="id">ID</button>
-            <button class="rt-chip" data-lb-group="domain" data-k="ood">OOD</button>
-          </div></div>
-        </div>
+    <figure class="hero-evidence">
+      <div class="hero-evidence-frame">
+        <video class="video-showcase-video" src="static/videos/video_compressed.mp4" autoplay muted loop playsinline preload="metadata" controls aria-label="BiDex-100 project showcase"></video>
       </div>
-      <div class="lb-wrap"><table class="lb-table compact" id="agg-table"></table></div>
-      <p class="evidence-caption">Every result cell is shown as <b>SR / Score</b>. Ranking follows the selected dimension, metric, and domain; capability columns are equal-weight means over their tasks. Best values are highlighted.</p>
-    </div>
+    </figure>
+  </div>
+</section>
 
-    <div class="section-head" style="margin-top:38px; margin-bottom:14px;">
-      <p class="eyebrow">Detailed Results</p>
-      <h2>Per-task evaluation results · 106 tasks × 7 models.</h2>
-      <p class="lead">Each cell is computed from 2 fixed seeds × 25 episodes (50 rollouts) per domain. Strict success is shown first by default; toggle the metric or domain to inspect partial progress and OOD degradation.</p>
-      <time class="results-updated" datetime="2026-10-19">Updated 2026.10.19</time>
-    </div>
-    <div class="chart-panel wide">
-      <div class="rt-controls">
-        <div class="field"><span>Metric</span><div class="rt-chips">
-          <button class="rt-chip active" data-group="metric" data-k="succ">Strict success</button>
-          <button class="rt-chip" data-group="metric" data-k="score">Progress score</button>
-        </div></div>
-        <div class="field"><span>Domain</span><div class="rt-chips">
-          <button class="rt-chip active" data-group="domain" data-k="all">ID + OOD (mean)</button>
-          <button class="rt-chip" data-group="domain" data-k="id">In-Domain</button>
-          <button class="rt-chip" data-group="domain" data-k="ood">Out-of-Domain</button>
-        </div></div>
-      </div>
-      <div class="table-wrap"><table class="results-table" id="results-table" aria-describedby="rtable-cap"></table></div>
-      <p id="rtable-cap" class="dim evidence-caption">Cell shading scales with the value (0–100). Rows are grouped by capability axis (colored header); the <b>Overall mean</b> footer is the equal-weight per-model mean over 212 task-runs (106 tasks × 2 domains). Click a task row to re-highlight; open any task card in the gallery for the per-subtask breakdown. <b>Best value per task is bolded.</b></p>
-    </div>
+<section class="results-invitation">
+  <div class="container">
+    <div><p class="eyebrow">Compare the baselines</p><h2>From demonstrations to evaluation.</h2><p>Explore seven VLA models across all 106 tasks, with matched ID and OOD results.</p></div>
+    <a class="btn btn-primary" href="leaderboard.html">Explore the leaderboard <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 
 <!-- ================= DOCS / CITATION ================= -->
-<section class="section evidence-band evidence-band--resources" id="docs" data-section-index="08">
+<section class="section evidence-band evidence-band--resources" id="docs" data-section-index="07">
   <div class="container">
     <div class="section-head">
       <p class="eyebrow">Get Started</p>
@@ -387,11 +342,11 @@
         <a href="#benchmark">Benchmark</a>
         <a href="#get-started">Tasks</a>
         <a href="#setup">Setup</a>
-        <a href="#leaderboard">Leaderboard</a>
+        <a href="leaderboard.html">Leaderboard</a>
       </div>
       <div>
         <h5>Reproduce</h5>
-        <a href="#leaderboard">Baselines</a>
+        <a href="leaderboard.html">Baselines</a>
         <a href="#domain-randomization">Evaluation</a>
         <a class="resource-link" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
       </div>

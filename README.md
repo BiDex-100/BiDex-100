@@ -14,7 +14,7 @@ efficiency.
 
 - 🌐 **Project page (this site):** see `index.html` (served from the `gh-pages` branch).
 - 💻 **Code, tasks & evaluation tooling:** https://github.com/robbyant-research/BiDex-100
-- 📊 **Leaderboard:** on this project page → *Leaderboard*.
+- 📊 **Leaderboard:** see `leaderboard.html` for News, aggregate rankings, and Detailed Results.
 - 📦 **Teleoperation data (8,080 episodes):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets
 - 🧱 **Object asset library (~300 assets):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets
 

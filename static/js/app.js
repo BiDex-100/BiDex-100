@@ -1,4 +1,4 @@
-/* BiDex-100 homepage interactions. Results are generated from the selected
+/* BiDex-100 project and results page interactions. Results are generated from the selected
    raw evaluation folders (106 tasks × 7 models × ID/OOD). */
 (function(){
   "use strict";
@@ -14,10 +14,40 @@
   const MODELS = B.MODELS;            // ordered strongest -> weakest
   const MID = {}; MODELS.forEach(m=>MID[m.id]=m);
 
+  const redirectLegacyResults=()=>{
+    if(document.body.classList.contains("home-page") && ["#leaderboard","#results","#news"].includes(location.hash)){
+      location.replace(new URL("leaderboard.html"+location.hash,location.href));
+      return true;
+    }
+    return false;
+  };
+  window.addEventListener("hashchange",redirectLegacyResults);
+  if(redirectLegacyResults()) return;
+
+  /* ---------- Fullscreen cover and benchmark cards ---------- */
+  (function(){
+    const grid=$("#stats-grid");
+    if(grid) B.PROOF_STATS.forEach((s,i)=>{
+      const card=el("article","stat-card");
+      card.innerHTML=`<span class="stat-index">${String(i+1).padStart(2,"0")}</span><strong class="stat-value">${s.n}</strong><h3>${s.label}</h3><p>${s.sub}</p>`;
+      grid.appendChild(card);
+    });
+    const video=$("#hero-video"), button=$("#hero-playback");
+    if(!video||!button) return;
+    const update=()=>{
+      button.setAttribute("aria-pressed",video.paused?"true":"false");
+      button.innerHTML=video.paused?'Play background <span aria-hidden="true">▷</span>':'Pause background <span aria-hidden="true">Ⅱ</span>';
+    };
+    video.addEventListener("play",update); video.addEventListener("pause",update);
+    if(reduceMotion){ video.autoplay=false; video.pause(); }
+    button.addEventListener("click",()=>{ if(video.paused) video.play().catch(update); else video.pause(); });
+    update();
+  })();
+
   /* ---------- Nav ---------- */
   (function(){
     const nav=$("#nav"), burger=$("#burger"), drawer=$("#drawer"), progress=$("#nav-progress"), drawerClose=$("#drawer-close");
-    const onScroll=()=>{ nav.classList.toggle("solid", window.scrollY>20);
+    const onScroll=()=>{ nav.classList.toggle("solid", document.body.classList.contains("results-page")||window.scrollY>20);
       const h=document.documentElement.scrollHeight-window.innerHeight;
       progress.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+"%"; spy(); };
     const setDrawer=open=>{ drawer.classList.toggle("open",open); burger.setAttribute("aria-expanded",open?"true":"false"); };
@@ -25,8 +55,8 @@
     if(drawerClose) drawerClose.addEventListener("click",()=>setDrawer(false));
     $$(".drawer a").forEach(a=>a.addEventListener("click",()=>setDrawer(false)));
     document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&drawer.classList.contains("open")) setDrawer(false); });
-    const links=$$("#nav-links a"); const sections=links.map(a=>$(a.getAttribute("href"))).filter(Boolean);
-    function spy(){ const y=window.scrollY+96; let cur=sections[0]?.id; for(const s of sections){ if(s&&s.offsetTop<=y) cur=s.id; }
+    const links=$$("#nav-links a, .results-jump-nav a").filter(a=>a.getAttribute("href").startsWith("#")); const sections=links.map(a=>$(a.getAttribute("href"))).filter(Boolean);
+    function spy(){ const y=window.scrollY+140; let cur=null; for(const s of sections){ if(s&&s.getBoundingClientRect().top+window.scrollY<=y) cur=s.id; }
       links.forEach(a=>{const on=a.getAttribute("href")==="#"+cur; a.classList.toggle("active",on); if(on)a.setAttribute("aria-current","true"); else a.removeAttribute("aria-current");}); }
     window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
   })();
@@ -342,7 +372,7 @@
   /* ---------- Results heatmap (106 tasks x 7 models) ---------- */
   (function(){
     const tbl=$("#results-table"); if(!tbl) return;
-    const state={ metric:"succ", domain:"all" };
+    const state={ metric:"succ", domain:"all", query:"", axis:"all" };
     function val(tid, mid){ const d=B.RESULTS[tid][mid]; if(!d) return null;
       if(state.domain==="all") return state.metric==="score"?(d.score_id+d.score_ood)/2:(d.succ_id+d.succ_ood)/2;
       return d[state.metric+"_"+state.domain]; }
@@ -354,26 +384,32 @@
     function build(){
       let head=`<thead><tr class="rt-ax-head" style="--c:var(--bone)"><th colspan="${MODELS.length+1}">106 tasks × ${MODELS.length} VLA models · heatmap = ${state.metric==="score"?"progress score":"strict success"} (0–100) · domain = ${state.domain==="all"?"ID+OOD mean":state.domain==="id"?"In-Domain":"Out-of-Domain"}</th></tr>
       <tr><th class="th-task">Task</th>${MODELS.map(m=>`<th class="th-pol" style="border-bottom:2px solid ${m.color}">${m.name}</th>`).join("")}</tr></thead>`;
-      let body="<tbody>"; let prevAx=null;
+      let body="<tbody>"; let matched=0;
       B.AXES.forEach(a=>{
-        body+=`<tr class="rt-ax-head" style="--c:${a.color}"><th colspan="${MODELS.length+1}" style="background:${a.color}">${a.label} · ${a.count} tasks</th></tr>`;
-        B.TASKS.filter(t=>t.axis===a.key).forEach(t=>{
+        const tasks=B.TASKS.filter(t=>t.axis===a.key && (state.axis==="all"||t.axis===state.axis) && `${t.name} ${t.id} ${t.language}`.toLowerCase().includes(state.query));
+        if(!tasks.length) return;
+        matched+=tasks.length;
+        body+=`<tr class="rt-ax-head" style="--c:${a.color}"><th colspan="${MODELS.length+1}" style="background:${a.color}">${a.label} · ${tasks.length} tasks</th></tr>`;
+        tasks.forEach(t=>{
           const best=Math.max(...MODELS.map(m=>val(t.id,m.id)));
           const cells=MODELS.map(m=>{ const v=val(t.id,m.id); const isBest=Math.abs(v-best)<1e-9;
             return `<td class="num" style="background:${cellColor(v)};color:${textColor(v)}${isBest?";font-weight:700":""}">${v==null?"—":fmt2(v)}</td>`; }).join("");
-          body+=`<tr data-tid="${t.id}" class="result-row"><td class="task rttask" style="--c:${a.color};border-left:3px solid ${a.color}">${t.name}</td>${cells}</tr>`;
+          body+=`<tr data-tid="${t.id}" class="result-row"><td class="task rttask" style="--c:${a.color};border-left:3px solid ${a.color}"><button class="result-task-link" type="button" data-open-task="${t.id}">${t.name}<span aria-hidden="true"> ↗</span></button></td>${cells}</tr>`;
         });
       });
-      body+=`<tr class="mean"><td class="mean-label">Overall mean</td>${MODELS.map(m=>{
+      if(!matched) body+=`<tr><td class="results-empty" colspan="${MODELS.length+1}">No tasks match this search. Try another name or capability.</td></tr>`;
+      const count=$("#result-count"); if(count) count.textContent=`${matched} of ${B.TASKS.length} tasks`;
+      body+=`<tr class="mean"><td class="mean-label">Overall mean · all tasks</td>${MODELS.map(m=>{
         const v= state.domain==="all"?(state.metric==="score"?m.all_score:m.all_succ) : (state.metric==="score"?(state.domain==="id"?m.id_score:m.ood_score):(state.domain==="id"?m.id_succ:m.ood_succ));
         return `<td class="num mean-v">${fmt2(v)}</td>`; }).join("")}</tr>`;
       body+="</tbody>";
       tbl.innerHTML=head+body;
-      const tip=el("div","htooltip"); document.body.appendChild(tip);
+      $$('[data-open-task]',tbl).forEach(button=>button.addEventListener("click",event=>{event.stopPropagation();openModal(taskById(button.dataset.openTask));}));
+      const tip=$(".htooltip")||el("div","htooltip"); if(!tip.isConnected) document.body.appendChild(tip);
       function moveTip(e){ const r=e.target.getBoundingClientRect(); tip.style.left=Math.min(window.innerWidth-264, r.left+12)+"px"; tip.style.top=Math.max(8, r.top-8-tip.offsetHeight)+"px"; }
       $$("tr.result-row",tbl).forEach(row=>{ row.tabIndex=0;
         row.addEventListener("click",()=>{ $$("tr.result-row",tbl).forEach(r=>r.classList.toggle("selected",r===row)); });
-        row.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); row.click(); } });
+        row.addEventListener("keydown",e=>{ if(e.target===row && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); row.click(); } });
       });
       $$("td.num:not(.mean-v)",tbl).forEach(td=>{
         td.addEventListener("mouseenter",e=>{ const tr=td.closest("tr"); const tid=tr.dataset.tid; const t=taskById(tid);
@@ -385,7 +421,10 @@
       });
     }
     build();
-    $$(".rt-chip").forEach(chip=>{ chip.addEventListener("click",()=>{
+    const search=$("#result-search"), axis=$("#result-axis");
+    if(search) search.addEventListener("input",()=>{state.query=search.value.trim().toLowerCase();build();});
+    if(axis) axis.addEventListener("change",()=>{state.axis=axis.value;build();});
+    $$(".rt-chip[data-group]").forEach(chip=>{ chip.addEventListener("click",()=>{
       const grp=chip.dataset.group; $$(".rt-chip[data-group=\""+grp+"\"]").forEach(x=>x.classList.remove("active")); chip.classList.add("active");
       if(grp==="metric") state.metric=chip.dataset.k; if(grp==="domain") state.domain=chip.dataset.k; build();
     }); });
@@ -407,7 +446,7 @@
     // Task cards are injected after the browser's initial hash jump. Re-align
     // deep links once dynamic content has reached its final layout.
     if(location.hash){ requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      const target=document.querySelector(location.hash); if(target) target.scrollIntoView({block:"start"});
+      const target=document.getElementById(location.hash.slice(1)); if(target) target.scrollIntoView({block:"start"});
     })); }
   })();
 
