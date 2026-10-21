@@ -375,7 +375,7 @@
           const best=Math.max(...MODELS.map(m=>val(t.id,m.id)));
           const cells=MODELS.map(m=>{ const v=val(t.id,m.id); const isBest=Math.abs(v-best)<1e-9;
             return `<td class="num" style="background:${cellColor(v)};color:${textColor(v)}${isBest?";font-weight:700":""}">${v==null?"—":fmt2(v)}</td>`; }).join("");
-          body+=`<tr data-tid="${t.id}" class="result-row"><td class="task rttask" style="--c:${a.color};border-left:3px solid ${a.color}">${t.name}<span class="robot">${t.robot==="astribot"?"AT":"  "}</span></td>${cells}</tr>`;
+          body+=`<tr data-tid="${t.id}" class="result-row"><td class="task rttask" style="--c:${a.color};border-left:3px solid ${a.color}">${t.name}</td>${cells}</tr>`;
         });
       });
       body+=`<tr class="mean"><td class="mean-label">Overall mean</td>${MODELS.map(m=>{
