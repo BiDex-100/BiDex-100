@@ -1,12 +1,12 @@
-/* Fullscreen project cover and a separate, paper-toned results workspace. */
+/* Project cover and a separate, paper-toned results workspace. */
 .home-page > .nav{position:fixed;inset:0 0 auto;background:rgba(248,246,241,.92);backdrop-filter:blur(14px);}
 .nav-links .page-current{background:var(--accent-pale);color:var(--accent);}
 .section:target{opacity:1;transform:none;transition:none;}
 
 /* Retain the original color and type rules from style.css. */
-.hero.hero-fullscreen{min-height:100vh;min-height:100svh;padding:0;display:flex;flex-direction:column;justify-content:center;background:var(--bg);isolation:isolate;}
+.hero.hero-fullscreen{min-height:68vh;min-height:68svh;padding:0;display:flex;flex-direction:column;justify-content:center;background:var(--bg);isolation:isolate;}
 .hero-fullscreen .hero-bg-video{pointer-events:none;}
-.hero-stage{width:100%;padding-block:100px;}
+.hero-stage{width:100%;padding-block:clamp(72px,9vh,100px);}
 .hero-fullscreen .hero-wordmark::after{display:none;}
 
 .stats-section{padding:24px 0;background:var(--paper);border-block:1px solid var(--line);}
@@ -74,7 +74,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
   .results-gallery-link{display:none!important;}
 }
 @media(max-width:760px){
-  .hero-stage{padding-block:100px;}
+  .hero-stage{padding-top:96px;padding-bottom:48px;}
   .hero-fullscreen .cta .btn{padding-inline:12px;}
   .stats-section{padding:16px 0;}
   .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
