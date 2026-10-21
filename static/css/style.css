@@ -57,7 +57,7 @@
   --duration-medium:250ms;
 }
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:72px; overscroll-behavior-y:none;}
+html{scroll-behavior:auto; -webkit-text-size-adjust:100%; scroll-padding-top:72px; overscroll-behavior-y:none;}
 body{
   margin:0; background:var(--bg); color:var(--text);
   font-family:var(--body); font-size:16px; line-height:1.7;
@@ -227,8 +227,8 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
 
 .hero{position:relative; overflow:hidden; padding:0;}
-.hero-bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; filter:brightness(.72) saturate(.9);}
-.hero-bg-scrim{position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(248,246,241,.55) 0%,rgba(248,246,241,.82) 60%,rgba(248,246,241,.95) 100%);}
+.hero-bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;}
+.hero-bg-scrim{position:absolute; inset:0; z-index:-1; background:var(--bg); opacity:.86;}
 .hero.hero-centered{
   isolation:isolate;
   padding:clamp(38px,5vw,72px) 0 0;
