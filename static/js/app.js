@@ -14,20 +14,6 @@
   const MODELS = B.MODELS;            // ordered strongest -> weakest
   const MID = {}; MODELS.forEach(m=>MID[m.id]=m);
 
-  /* ---------- Proof strip ---------- */
-  (function(){
-    const g=$("#proof-grid"); if(!g) return;
-    const select = cell=>$$(".proof-cell",g).forEach(item=>{const a=item===cell; item.classList.toggle("selected",a); item.setAttribute("aria-pressed",a?"true":"false");});
-    B.PROOF_STATS.forEach(s=>{
-      const c=el("div","proof-cell"); c.tabIndex=0; c.setAttribute("role","button");
-      c.setAttribute("aria-label",`${s.n} ${s.label}. ${s.tip}`);
-      c.innerHTML=`<div class="n">${s.n}</div><div class="l">${s.label}</div><div class="q">${s.sub}</div><div class="proof-tip">${s.tip}</div>`;
-      c.addEventListener("click",()=>select(c));
-      c.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(c);} });
-      g.appendChild(c);
-    });
-  })();
-
   /* ---------- Nav ---------- */
   (function(){
     const nav=$("#nav"), burger=$("#burger"), drawer=$("#drawer"), progress=$("#nav-progress"), drawerClose=$("#drawer-close");

@@ -208,6 +208,8 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .btn-primary{background:var(--accent); color:var(--ink); border-color:var(--accent); font-weight:600;}
 .btn-primary:hover{background:var(--accent-hover); color:var(--ink); transform:translateY(-1px);}
 .btn-resource{background:rgba(255,255,255,.78); border-color:rgba(21,32,30,.2); box-shadow:0 7px 18px -16px rgba(22,35,33,.42);}
+.resource-icon{width:20px; height:20px; object-fit:contain; flex-shrink:0;}
+.footer-grid a.resource-link{display:flex; align-items:center; gap:8px;}
 .btn-ghost{border-color:transparent; color:var(--text-dim);}
 .btn-ghost:hover{color:var(--accent); border-color:var(--line-strong);}
 .btn:disabled,.btn.is-unavailable{cursor:not-allowed; opacity:.64; transform:none; box-shadow:none;}
@@ -260,22 +262,6 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .hero-centered .cta .btn-primary .btn-arrow{display:inline-grid; place-items:center; width:17px; height:17px; margin-left:1px; border-radius:50%; background:rgba(255,255,255,.2); font-size:14px; line-height:1; transition:transform var(--duration-fast),background var(--duration-fast);}
 .hero-centered .cta .btn-primary:hover .btn-arrow{transform:translateX(2px); background:rgba(255,255,255,.3);}
 .hero-centered .cta .is-unavailable{opacity:.56; cursor:default;}
-.hero.hero-centered .hero-proof{margin-top:clamp(24px,3vw,40px); border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); background:rgba(255,255,255,.78);}
-.hero.hero-centered .hero-proof .proof-grid{max-width:var(--maxw);}
-.hero.hero-centered .hero-proof .proof-cell{padding-top:clamp(11px,1.25vw,15px); padding-bottom:clamp(11px,1.25vw,15px);}
-
-.proof{background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-.proof-grid{display:grid; grid-template-columns:repeat(6,1fr); max-width:var(--maxw); margin:0 auto;}
-.proof-cell{padding:clamp(12px,1.4vw,18px) clamp(12px,1.4vw,20px); border-left:1px solid var(--line); cursor:pointer; transition:background .2s,box-shadow .2s; position:relative; outline:none;}
-.proof-cell::before{content:""; position:absolute; left:0; top:0; width:2px; height:100%; background:var(--accent); transform:scaleY(0); transform-origin:center; transition:transform .25s;}
-.proof-cell:hover,.proof-cell.selected,.proof-cell:focus-visible{background:var(--accent-pale); box-shadow:inset 0 1px 0 rgba(26,122,109,.12),inset 0 -1px 0 rgba(26,122,109,.12);}
-.proof-cell:hover::before,.proof-cell.selected::before,.proof-cell:focus-visible::before{transform:scaleY(1);}
-.proof-cell .n{font-family:var(--display); font-weight:700; font-size:clamp(22px,2.6vw,30px); color:var(--bone); line-height:1; letter-spacing:-.02em;}
-.proof-cell .l{font-family:var(--mono); font-size:11.5px; color:var(--text-dim); margin-top:6px; letter-spacing:.02em; text-transform:none;}
-.proof-cell .q{font-family:var(--mono); font-size:11px; color:var(--accent); margin-top:4px; letter-spacing:.03em;}
-.proof-tip{position:absolute; left:14px; right:14px; bottom:calc(100% + 8px); background:var(--bg-3); border:1px solid var(--line-strong); border-radius:var(--r); padding:10px 12px; font-size:12.5px; color:var(--text); line-height:1.5; opacity:0; pointer-events:none; transition:opacity .18s; z-index:30; box-shadow:var(--shadow); max-width:260px;}
-.proof-cell:hover .proof-tip,.proof-cell:focus-visible .proof-tip{opacity:1;}
-
 .hero-evidence{margin:0; min-width:0;}
 .hero-evidence-frame{
   position:relative;
@@ -601,8 +587,6 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
 .teleop-stack .ph .evidence-caption{margin:0; padding:12px 16px 14px; border-top:1px solid var(--line); background:var(--panel);}
 
 @media (max-width:1080px){
-  .proof-grid{grid-template-columns:repeat(3,1fr);}
-  .proof-cell{border-bottom:1px solid var(--line);}
   .task-grid{grid-template-columns:repeat(3,1fr);}
   .emb-grid{grid-template-columns:1fr;}
   .compare{grid-template-columns:1fr;}
@@ -630,7 +614,6 @@ h1::after,h2::after{content:""; display:block; width:2rem; height:2px; backgroun
   .evidence-band--resources .resource-card{border-left:0; border-top:1px solid var(--line-strong);}
   .evidence-band--protocol .eval-tier:first-child,
   .evidence-band--resources .resource-card:first-child{border-top:0;}
-  .proof-grid{grid-template-columns:repeat(2,1fr);}
   .footer-grid{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:440px){
