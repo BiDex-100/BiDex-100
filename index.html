@@ -31,13 +31,13 @@
     </a>
     <div class="nav-links" id="nav-links">
       <a href="#overview">Overview</a>
-      <a href="#benchmark">Benchmark</a>
+      <a href="document.html">Document</a>
       <a href="#get-started">Tasks</a>
       <a href="leaderboard.html">Leaderboard</a>
       <a href="leaderboard.html#news">News</a>
     </div>
     <div class="nav-cta">
-      <a href="#docs" class="btn btn-primary">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <a href="document.html" class="btn btn-primary">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -49,13 +49,12 @@
     <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
   </div>
   <a href="#overview">Overview</a>
-  <a href="#benchmark">Benchmark</a>
+  <a href="document.html">Document</a>
   <a href="#setup">Setup</a>
   <a href="#domain-randomization">Domain Randomization</a>
   <a href="#get-started">Tasks</a>
   <a href="leaderboard.html">Leaderboard</a>
   <a href="leaderboard.html#news">News</a>
-  <a href="#docs">Get Started</a>
 </div>
 
 <main id="top">
@@ -292,30 +291,6 @@
   </div>
 </section>
 
-<!-- ================= DOCS / CITATION ================= -->
-<section class="section evidence-band evidence-band--resources" id="docs" data-section-index="07">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Get Started</p>
-      <h2>Code, tasks, data & evaluation tools.</h2>
-    </div>
-    <div class="resource-grid" id="resource-grid"></div>
-    <div style="margin-top:30px;">
-      <div class="cite-box">
-        <pre id="bibtex">@misc{bidex100,
-  title         = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous
-                   Manipulation Across 100+ Simulation Tasks},
-  year          = {2025},
-  howpublished  = {https://github.com/robbyant-research/BiDex-100}
-}</pre>
-        <div class="actions">
-          <button class="btn" id="copy-bib">Copy BibTeX</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <!-- ================= FOOTER ================= -->
@@ -336,6 +311,7 @@
       </div>
       <div>
         <h5>Reproduce</h5>
+        <a href="document.html">Document</a>
         <a href="leaderboard.html">Baselines</a>
         <a href="#domain-randomization">Evaluation</a>
         <a class="resource-link" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
@@ -353,22 +329,9 @@
   </div>
 </footer>
 
-<div class="copy-toast" id="copy-toast">BibTeX copied</div>
 
 <script src="static/js/data.js"></script>
 <script type="application/json" id="modal-manifest">{"video_dir": "static/videos/modal"}</script>
-<script>
-(function(){
-  var g=document.getElementById('resource-grid'); if(!g) return;
-  var cards=[
-   {title:'Code & Task Suites', body:'Task specifications (YAML), the MuJoCo simulation, the vectorized evaluation harness, and the retargeting stack — all open-sourced.', meta:'github.com/robbyant-research', href:'https://github.com/robbyant-research/BiDex-100'},
-   {title:'Demonstration Data', body:'8,080 success-validated episodes, 6.25M frames, six RGB-D streams, 58-DoF actions and 130-D observations in LeRobot v2.1.', meta:'Hugging Face · 94 GB', href:'https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets'},
-   {title:'Object Assets', body:'~300 object meshes (food, tableware, containers, tools, articulated appliances) with real mass and friction — spanning RoboCasa-Objaverse, Lightwheel, HOPE, Articraft and more.', meta:'Hugging Face · Assets', href:'https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets'},
-   {title:'Supplementary', body:'Extended descriptions, embodiment details, per-axis statistics, and the full 106-task atlas.', meta:'PDF', href:'./static/pdf/BiDex_Supplementary_Material.pdf'}
-  ];
-  cards.forEach(function(r){var a=document.createElement('a'); a.className='resource-card'; if(r.href){a.href=r.href; a.target='_blank'; a.rel='noopener noreferrer';} a.innerHTML='<div class="ic">📄</div><h4>'+r.title+'</h4><p>'+r.body+'</p><div class="meta">'+r.meta+'</div>'; g.appendChild(a);});
-})();
-</script>
 <script src="static/js/app.js"></script>
 </body>
 </html>

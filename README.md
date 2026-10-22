@@ -1,29 +1,12 @@
-# BiDex-100
+# BiDex-100 website
 
-A simulation benchmark for **bimanual dexterous manipulation**: 106 declaratively
-specified tasks across five capability axes — *Generalization*, *Instruction-Following*,
-*Limited-Demonstrations*, *Long-Horizon*, and *Memory* — with progress-based predicate
-scoring, matched In-Domain / Out-of-Domain evaluation, two 22-DoF hand embodiments, and
-**8,080 success-validated teleoperated demonstrations** (6.25M frames).
+A benchmark for bimanual dexterous manipulation: 106 tasks, five capability axes,
+two embodiments and 8,080 demonstrations.
 
-We evaluate seven recent Vision-Language-Action models under a unified protocol,
-establishing baselines for capability-specific performance, robustness, and data
-efficiency.
+- [Website](https://bidex-100.github.io/BiDex-100/)
+- [Document](https://bidex-100.github.io/BiDex-100/document.html)
+- [Leaderboard](https://bidex-100.github.io/BiDex-100/leaderboard.html)
+- [Benchmark code](https://github.com/robbyant-research/BiDex-100)
+- [Hugging Face](https://huggingface.co/datasets/Robbyant-Research/BiDex-100) · [ModelScope](https://modelscope.cn/datasets/Robbyant-Research/BiDex-100)
 
-## Resources
-
-- 🌐 **Project page (this site):** see `index.html` (served from the `gh-pages` branch).
-- 💻 **Code, tasks & evaluation tooling:** https://github.com/robbyant-research/BiDex-100
-- 📊 **Leaderboard:** see `leaderboard.html` for News, aggregate rankings, and Detailed Results.
-- 📦 **Teleoperation data (8,080 episodes):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets
-- 🧱 **Object asset library (~300 assets):** https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets
-
-## Citation
-
-```bibtex
-@misc{bidex100,
-  title         = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks},
-  year          = {2025},
-  howpublished  = {https://github.com/robbyant-research/BiDex-100},
-}
-```
+Serve this directory locally with `python -m http.server 18765`.

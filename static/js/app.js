@@ -13,6 +13,19 @@
   const fmt2 = n => Number(n).toFixed(2);
   const MODELS = B.MODELS;            // ordered strongest -> weakest
   const MID = {}; MODELS.forEach(m=>MID[m.id]=m);
+  const modelSources = {
+    "π0.5": ["pi05", "https://github.com/WangYong-999/openpi-bidex100"],
+    "LingBot-VLA-v2": ["lingbot", "https://github.com/WangYong-999/lingbot-vla-v2-bidex100"],
+    "GR00T-N1.7": ["gr00t", "https://github.com/WangYong-999/Isaac-GR00T-bidex100"],
+    "OpenDM-DM05": ["dm05", "https://github.com/dexmal/opendm"],
+    "Galaxea G0.5": ["galaxea", "https://github.com/OpenGalaxea/GalaxeaVLA"],
+    "Xiaomi XR1": ["xr1", "https://github.com/XiaomiRobotics/Xiaomi-Robotics-1"],
+    "InternVLA-A1.5": ["internvla", "https://github.com/InternRobotics/InternVLA-A-series"]
+  };
+  const modelLink = (m, showIcon = true) => {
+    const [icon, href] = modelSources[m.name];
+    return `<a class="model-repo-link" href="${href}" target="_blank" rel="noopener" aria-label="${m.name} GitHub repository">${showIcon ? `<img src="static/images/models/${icon}.png" alt="" width="26" height="26" loading="lazy">` : ""}<span>${m.name}</span></a>`;
+  };
 
   const redirectLegacyResults=()=>{
     if(document.body.classList.contains("home-page") && ["#leaderboard","#results","#news"].includes(location.hash)){
@@ -113,7 +126,7 @@
         const medal=i=>["🥇","🥈","🥉"][i]||(i+1);
         const body=ranked.map((m,i)=>`<tr class="${i===0?'lead':''}">
           <td class="rk"><span class="rank-badge rank-${i+1}" aria-label="Rank ${i+1}">${medal(i)}</span></td>
-          <td class="pn"><span class="swatch" style="--c:${m.color}"><i style="background:${m.color}"></i>${m.name}</span><small>${m.backbone}</small></td>
+          <td class="pn">${modelLink(m)}</td>
           <td class="type"><span class="type-tag">VLA</span></td>
           <td class="overall ${state.dimension==='overall'?'is-sorted':''}">${metricCell(values(m,null),best[0])}</td>
           ${axes.map((a,j)=>`<td class="${state.dimension===a.key?'is-sorted':''}">${metricCell(values(m,a.key),best[j+1])}</td>`).join("")}</tr>`).join("");
@@ -299,7 +312,7 @@
     const ov=el("div","modal-overlay"); const r=B.RESULTS[t.id];
     const rowsHtml = MODELS.map(m=>{ const d=r?r[m.id]:null; if(!d) return "";
       const sidr=`<td>${fmt2(d.succ_id)}</td><td>${fmt2(d.score_id)}</td><td>${fmt2(d.succ_ood)}</td><td>${fmt2(d.score_ood)}</td>`;
-      return `<tr><td><span class="swatch" style="--c:${m.color}"><i style="background:${m.color}"></i>${m.name}</span></td>${sidr}</tr>`; }).join("");
+      return `<tr><td>${modelLink(m, false)}</td>${sidr}</tr>`; }).join("");
     // per-subtask: ID (lingbot) and OOD (lingbot if available)
     const lingModel=MODELS.find(m=>m.name==="LingBot-VLA-v2");
     const ling= r && lingModel && r[lingModel.id];
@@ -375,7 +388,7 @@
     function textColor(v){ return v>52?"#fffefb":"#15201e"; }
     function build(){
       let head=`<thead><tr class="rt-ax-head" style="--c:var(--bone)"><th colspan="${MODELS.length+1}">106 tasks × ${MODELS.length} VLA models · heatmap = ${state.metric==="score"?"progress score":"strict success"} (0–100) · domain = ${state.domain==="all"?"ID+OOD mean":state.domain==="id"?"In-Domain":"Out-of-Domain"}</th></tr>
-      <tr><th class="th-task">Task</th>${MODELS.map(m=>`<th class="th-pol" style="border-bottom:2px solid ${m.color}">${m.name}</th>`).join("")}</tr></thead>`;
+      <tr><th class="th-task">Task</th>${MODELS.map(m=>`<th class="th-pol" style="border-bottom:2px solid ${m.color}">${modelLink(m, false)}</th>`).join("")}</tr></thead>`;
       let body="<tbody>"; let matched=0;
       B.AXES.forEach(a=>{
         const tasks=B.TASKS.filter(t=>t.axis===a.key && (state.axis==="all"||t.axis===state.axis) && `${t.name} ${t.id} ${t.language}`.toLowerCase().includes(state.query));

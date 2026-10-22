@@ -1,6 +1,13 @@
 /* Project cover and a separate, paper-toned results workspace. */
 .home-page > .nav{position:fixed;inset:0 0 auto;background:rgba(248,246,241,.92);backdrop-filter:blur(14px);}
 .nav-links .page-current{background:var(--accent-pale);color:var(--accent);}
+.model-repo-link{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none;white-space:nowrap;}
+.model-repo-link:hover{color:var(--accent);}
+.model-repo-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:3px;}
+.model-repo-link img{display:block;width:26px;height:26px;object-fit:contain;flex-shrink:0;}
+.results-table .model-repo-link{gap:6px;white-space:normal;line-height:1.4;}
+.model-icon-credit{font:10px/1.6 var(--mono);color:var(--text-faint);margin:12px 0 0;}
+.model-icon-credit a{color:var(--accent);}
 .section:target{opacity:1;transform:none;transition:none;}
 
 /* Retain the original color and type rules from style.css. */
